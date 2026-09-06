@@ -45,6 +45,7 @@ dev-config.js     # written by dev-server.py at startup - gitignored, never depl
 dev-server.py     # local dev server shared by dev-server.sh/.bat (see Local preview below)
 dev-server.sh     # Unix wrapper for dev-server.py
 dev-server.bat    # Windows wrapper for dev-server.py
+tests/            # node:test unit tests for changelogs.js/profiles.js/versions.js
 assets/           # logo/icon/author avatar, copied from the main TIGHC repo's assets/
 CNAME             # custom domain (tighc.stuxie.dev) for GitHub Pages
 ```
@@ -66,6 +67,22 @@ GitHub Pages is configured to serve from this repo's root on `main` - just
 push. The `CNAME` file points the custom domain at GitHub Pages; don't
 remove it unless the domain setup is changing too. See
 [INSTALL.md](INSTALL.md) for self-hosting elsewhere.
+
+## Testing
+
+The parsing/formatting logic in `changelogs.js`, `profiles.js`, and
+`versions.js` (changelog Markdown parsing, profile binding/label
+formatting and sorting, version-string handling) has unit tests under
+`tests/`, using Node's built-in test runner - no extra dependencies
+required:
+
+```
+node --test
+```
+
+CI (`.github/workflows/ci.yml`) runs these tests and validates the
+top-level HTML pages with [html-validate](https://html-validate.org/) on
+every push and pull request.
 
 ## Versioning and contact
 

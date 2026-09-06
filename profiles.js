@@ -1,12 +1,12 @@
 (function () {
   var REPO = "TIGHC/Profiles";
   var BRANCH = "main";
-  var DEV = window.TIGHC_DEV;
+  var DEV = (typeof window !== "undefined") ? window.TIGHC_DEV : undefined;
   var API_URL = DEV ? DEV.profilesApi : "https://api.github.com/repos/" + REPO + "/contents/";
   var RAW_BASE = DEV ? DEV.repos.profiles + "/" : "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/";
 
-  var statusEl = document.getElementById("profile-status");
-  var gridEl = document.getElementById("profile-grid");
+  var statusEl = (typeof document !== "undefined") ? document.getElementById("profile-status") : null;
+  var gridEl = (typeof document !== "undefined") ? document.getElementById("profile-grid") : null;
 
   var KEY_LABELS = {
     mouse_left: "left click",
@@ -96,45 +96,67 @@
   }
 
   function escapeHtml(str) {
-    var div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
 
-  fetch(API_URL)
-    .then(function (res) {
-      if (!res.ok) throw new Error("GitHub API returned " + res.status);
-      return res.json();
-    })
-    .then(function (entries) {
-      var dirs = entries.filter(function (e) { return e.type === "dir" && e.name !== "assets"; });
-      if (!dirs.length) throw new Error("No profile folders found");
+  function compareProfiles(a, b) {
+    var nameA = (a.data && a.data.name) || a.dirName;
+    var nameB = (b.data && b.data.name) || b.dirName;
+    return nameA.localeCompare(nameB);
+  }
 
-      return Promise.all(
-        dirs.map(function (dir) {
-          return fetch(RAW_BASE + dir.name + "/profile.json")
-            .then(function (res) { return res.ok ? res.json() : null; })
-            .catch(function () { return null; })
-            .then(function (data) { return { dirName: dir.name, data: data }; });
-        })
-      );
-    })
-    .then(function (profiles) {
-      profiles.sort(function (a, b) {
-        var nameA = (a.data && a.data.name) || a.dirName;
-        var nameB = (b.data && b.data.name) || b.dirName;
-        return nameA.localeCompare(nameB);
+  function init() {
+    fetch(API_URL)
+      .then(function (res) {
+        if (!res.ok) throw new Error("GitHub API returned " + res.status);
+        return res.json();
+      })
+      .then(function (entries) {
+        var dirs = entries.filter(function (e) { return e.type === "dir" && e.name !== "assets"; });
+        if (!dirs.length) throw new Error("No profile folders found");
+
+        return Promise.all(
+          dirs.map(function (dir) {
+            return fetch(RAW_BASE + dir.name + "/profile.json")
+              .then(function (res) { return res.ok ? res.json() : null; })
+              .catch(function () { return null; })
+              .then(function (data) { return { dirName: dir.name, data: data }; });
+          })
+        );
+      })
+      .then(function (profiles) {
+        profiles.sort(compareProfiles);
+
+        profiles.forEach(function (profile) {
+          gridEl.appendChild(renderCard(profile));
+        });
+
+        statusEl.textContent = profiles.length + " profile" + (profiles.length === 1 ? "" : "s") + " loaded from TIGHC-Profiles.";
+      })
+      .catch(function (err) {
+        statusEl.innerHTML = "Couldn't load profiles from GitHub right now (" +
+          escapeHtml(err.message) + "). Browse them directly on " +
+          "<a href=\"https://github.com/" + REPO + "\" target=\"_blank\" rel=\"noopener\">GitHub</a> instead.";
       });
+  }
 
-      profiles.forEach(function (profile) {
-        gridEl.appendChild(renderCard(profile));
-      });
+  if (typeof document !== "undefined") {
+    init();
+  }
 
-      statusEl.textContent = profiles.length + " profile" + (profiles.length === 1 ? "" : "s") + " loaded from TIGHC-Profiles.";
-    })
-    .catch(function (err) {
-      statusEl.innerHTML = "Couldn't load profiles from GitHub right now (" +
-        escapeHtml(err.message) + "). Browse them directly on " +
-        "<a href=\"https://github.com/" + REPO + "\" target=\"_blank\" rel=\"noopener\">GitHub</a> instead.";
-    });
+  // Exposed for unit tests (node:test) — pure formatting/filtering/sorting
+  // logic only, no DOM/network code is exported or invoked here.
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = {
+      keyLabel: keyLabel,
+      keysLabel: keysLabel,
+      idLabel: idLabel,
+      enabledBindings: enabledBindings,
+      compareProfiles: compareProfiles,
+      escapeHtml: escapeHtml
+    };
+  }
 })();

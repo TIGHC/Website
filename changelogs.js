@@ -1,5 +1,5 @@
 (function () {
-  var DEV = window.TIGHC_DEV;
+  var DEV = (typeof window !== "undefined") ? window.TIGHC_DEV : undefined;
   var REPOS = DEV ? {
     engine:   DEV.repos.engine + "/CHANGELOG.md",
     profiles: DEV.repos.profiles + "/CHANGELOG.md",
@@ -20,9 +20,10 @@
   };
 
   function escapeHtml(str) {
-    var div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
 
   function inlineFormat(text) {
@@ -107,20 +108,33 @@
       });
   }
 
-  var tabs = document.querySelectorAll(".cl-tab");
-  var panels = document.querySelectorAll(".cl-panel");
+  if (typeof document !== "undefined") {
+    var tabs = document.querySelectorAll(".cl-tab");
+    var panels = document.querySelectorAll(".cl-panel");
 
-  tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      tabs.forEach(function (t) { t.classList.remove("active"); });
-      panels.forEach(function (p) { p.classList.remove("active"); });
-      tab.classList.add("active");
-      var key = tab.dataset.repo;
-      var panel = document.getElementById("cl-" + key);
-      if (panel) panel.classList.add("active");
-      loadPanel(key);
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (t) { t.classList.remove("active"); });
+        panels.forEach(function (p) { p.classList.remove("active"); });
+        tab.classList.add("active");
+        var key = tab.dataset.repo;
+        var panel = document.getElementById("cl-" + key);
+        if (panel) panel.classList.add("active");
+        loadPanel(key);
+      });
     });
-  });
 
-  loadPanel("engine");
+    loadPanel("engine");
+  }
+
+  // Exposed for unit tests (node:test) — pure parsing/formatting logic only,
+  // no DOM/network code is exported or invoked here.
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = {
+      escapeHtml: escapeHtml,
+      inlineFormat: inlineFormat,
+      sectionClass: sectionClass,
+      parseChangelog: parseChangelog
+    };
+  }
 })();
