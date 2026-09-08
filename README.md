@@ -90,3 +90,11 @@ Follows [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`),
 independently of the main TIGHC engine's own version - see
 [CHANGELOG.md](CHANGELOG.md) for what changed in each release. Questions,
 issues, or contributions: https://github.com/TIGHC/Website
+
+## License
+
+See [LICENSE.md](LICENSE.md).
+
+---
+
+*Built & Maintained by <img src="https://github.com/StuxieDev.png" height="14" alt="StuxieDev" valign="middle"> [StuxieDev](https://github.com/StuxieDev).*

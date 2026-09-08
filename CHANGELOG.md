@@ -4,7 +4,13 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
-## [1.2.4]
+## [1.2.5] - 2026-09-08
+
+### Changed
+- `CHANGELOG.md` entries now carry a date next to each version (`## [x.y.z] - YYYY-MM-DD`), backfilled from each release's git tag (and `git log -S` lookups for the ten early untagged releases), matching the Automater project's changelog format
+- `README.md` gained a `## License` section and a "Built & Maintained by StuxieDev" footer line at the bottom, matching Automater's layout
+
+## [1.2.4] - 2026-09-01
 
 ### Added
 - **`INSTALL.md`** — deployment guide covering GitHub Pages (production)
@@ -17,7 +23,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 - **`README.md`/`CONTRIBUTING.md`'s "Deploying"** — now cross-reference
   [INSTALL.md](INSTALL.md) for self-hosting elsewhere.
 
-## [1.2.3]
+## [1.2.3] - 2026-09-01
 
 ### Added
 - **`DEV_GUIDE.md`** — a dedicated local-development guide (requirements,
@@ -26,7 +32,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   The README's "Local preview" section now just points to it instead of
   duplicating the content.
 
-## [1.2.2]
+## [1.2.2] - 2026-09-01
 
 ### Fixed
 - **Mojibake in `commit.sh`/`commit.bat`/`dev-server.sh`/`dev-server.bat`
@@ -34,14 +40,14 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   garbled bytes (e.g. `ÔÇö`) on the default Windows console codepage.
   Replaced with plain ASCII dashes.
 
-## [1.2.1]
+## [1.2.1] - 2026-09-01
 
 ### Added
 - **Terms and Ethics disclaimer on the age gate** — every page's 18+ notice
   now states "By continuing, you agree to our Terms and Ethics of Use",
   linking to [/legal/terms](/legal/terms).
 
-## [1.2.0]
+## [1.2.0] - 2026-09-01
 
 ### Added
 - **"Boring Legal Stuff" hub** (`/legal`) — links to six new pages: Privacy
@@ -67,32 +73,32 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   `VERSION.md` dynamically, skip committing if nothing's staged, and skip
   tagging if the tag already exists.
 
-## [1.1.6]
+## [1.1.6] - 2026-08-30
 
 ### Added
 - **`commit.bat`/`commit.sh`** — pre-written commit+tag scripts, rewritten
   with each commit's exact message/tag before being run.
 
-## [1.1.5]
+## [1.1.5] - 2026-08-30
 
 ### Added
 - **`CONTRIBUTING.md`** — local preview steps, deploy notes, and the
   versioning convention for PRs.
 
-## [1.1.4]
+## [1.1.4] - 2026-08-30
 
 ### Changed
 - **`version.txt` renamed to `VERSION.md`** across all TIGHC repos —
   `versions.js` now fetches `VERSION.md` from each repo's raw GitHub content.
 
-## [1.1.3]
+## [1.1.3] - 2026-08-30
 
 ### Added
 - **Engine page** (`/engine`) — new page covering installation, all GUI tabs,
   profiles/bindings/priority, and Linux/Steam Deck setup. Linked from the nav
   on all pages.
 
-## [1.1.2]
+## [1.1.2] - 2026-08-30
 
 ### Fixed
 - **Footer version label** — the footer now shows "Website vX.X.X" instead of
@@ -102,12 +108,12 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 - **Repo moved to TIGHC org** — all URLs updated from `StuxieDev/TIGHC-Website`
   to `TIGHC/Website`.
 
-## [1.1.1]
+## [1.1.1] - 2026-08-30
 
 ### Changed
 - Updated static fallback version badges to v3.8.0 (Engine) and v1.3.0 (Profiles).
 
-## [1.1.0]
+## [1.1.0] - 2026-08-30
 
 ### Added
 - **Mobile & tablet support** — hamburger nav menu, responsive layouts at 760px
@@ -126,7 +132,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 - Feature grid collapses to 2 columns at tablet width (1000px) before going
   single-column at mobile (760px).
 
-## [1.0.9]
+## [1.0.9] - 2026-08-27
 
 ### Added
 - **Changelogs page** (`/changelogs`) — fetches and renders the CHANGELOG.md
@@ -135,7 +141,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 - `/changelog` redirects to `/changelogs` via meta-refresh and JS.
 - "Changelogs" added to the nav on all pages.
 
-## [1.0.8]
+## [1.0.8] - 2026-08-27
 
 ### Changed
 - Profiles page hero text updated to describe the new unified binding model
@@ -146,7 +152,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   "Continuous:" / "Pulse:" rows (which were always empty since mode was
   removed in profiles v1.2.0).
 
-## [1.0.7]
+## [1.0.7] - 2026-08-27
 
 ### Changed
 - Version badges updated: engine v3.5.0 → v3.7.0, profiles v1.2.0 badge added.
@@ -157,7 +163,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   since duration is no longer a configurable field.
 - Game profiles section: "keybinds and ranges" → `profile.json` (TIGHC 3.7.0).
 
-## [1.0.6]
+## [1.0.6] - 2026-08-27
 
 ### Changed
 - Version badge updated to v3.5.0.
@@ -166,7 +172,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 - "Continuous & pulse bindings" feature card notes that releasing a key
   mid-pulse cancels it immediately (added in TIGHC 3.5.0).
 
-## [1.0.5]
+## [1.0.5] - 2026-08-25
 
 ### Changed
 - **Navbar GitHub button (`.nav-gh`) is now a primary/filled button** -
@@ -174,7 +180,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   accent fill as `.btn-accent` (`var(--accent)` background, white text),
   at the smaller nav padding/radius.
 
-## [1.0.4]
+## [1.0.4] - 2026-08-25
 
 ### Changed
 - **Internal links no longer include `.html`** - `index.html` and
@@ -183,7 +189,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   (`/profiles`, `/`, `/#anchor`) since GitHub Pages serves both
   `/profiles` and `/` without requiring the file extension.
 
-## [1.0.3]
+## [1.0.3] - 2026-08-25
 
 ### Fixed
 - **Profiles page listed `assets/` as a broken profile card** -
@@ -194,7 +200,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   the same non-profile-folder skip the main TIGHC engine's
   `load_profiles()` does.
 
-## [1.0.2]
+## [1.0.2] - 2026-08-25
 
 ### Fixed
 - `assets/icon.png`, `favicon.ico`, and `logo.png` had an opaque dark
@@ -203,7 +209,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   background. Replaced with transparent versions (copied from the main
   TIGHC repo after fixing them there via a color-to-alpha un-blend).
 
-## [1.0.1]
+## [1.0.1] - 2026-08-25
 
 ### Fixed
 - `README.md` had been written as UTF-16LE (every character followed by a
@@ -219,7 +225,7 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   `README.md`, matching the same addition in the main TIGHC repo and
   TIGHC-Profiles.
 
-## [1.0.0]
+## [1.0.0] - 2026-08-25
 
 Initial release: the `tighc.stuxie.dev` landing site (`index.html`) and a
 live game-profiles page (`profiles.html`, fetched from TIGHC-Profiles via
