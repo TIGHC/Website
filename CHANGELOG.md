@@ -4,6 +4,14 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.2.6] - 2026-09-08
+
+### Added
+- Every local asset reference (`assets/logo.png`, `assets/icon.png`, `assets/favicon.ico` — `og:image`/`twitter:image` meta tags, favicon links, and inline `<img>` logos/icons across all 11 pages) now carries a `?v=1.2.6` cache-busting query string, so browser/CDN caches invalidate whenever a release changes one of these files instead of serving a stale copy indefinitely
+
+### Changed
+- `CONTRIBUTING.md`'s release checklist now notes that this project has no build step to interpolate the version automatically — the `?v=` query strings are hardcoded and must be bumped by hand across all 11 pages on any release that changes `assets/logo.png`, `assets/icon.png`, or `assets/favicon.ico`
+
 ## [1.2.5] - 2026-09-08
 
 ### Changed

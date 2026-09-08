@@ -36,6 +36,20 @@ Bump [`VERSION.md`](VERSION.md) and add a matching entry to
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`),
 independent of the main Engine's own version.
 
+Every local asset reference (`assets/logo.png`, `assets/icon.png`,
+`assets/favicon.ico`) carries a `?v=X.Y.Z` cache-busting query string so
+browser/CDN caches invalidate on release. Since this site has no build step
+to interpolate that automatically, **any release that changes one of those
+three files must also hand-bump its `?v=` string to the new version across
+every page that references it**: `index.html`, `engine.html`,
+`changelogs.html`, `profiles.html`, `legal.html`, and everything under
+`legal/` (`cookies.html`, `disclaimer.html`, `imprint.html`, `opt-out.html`,
+`privacy.html`, `terms.html`) - 11 files, ~7-8 references each (meta
+`og:image`/`twitter:image` tags, favicon `<link>`s, and inline `<img>`
+logos/icons). Forgetting this doesn't break anything visibly at release
+time - it just means visitors keep seeing the old asset until their cache
+happens to expire on its own.
+
 ## Deploying
 
 Merges to `main` publish automatically via GitHub Pages - no separate deploy
