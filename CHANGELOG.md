@@ -4,6 +4,14 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.2.10] - 2026-09-09
+
+### Fixed
+- v1.2.9's `html-validate@11` pin needs Node ^22.22.0 or >=24.8.0, but the
+  `html-validate` job's `setup-node` step was still on Node 20, so the CLI
+  crashed with `fs.globSync is not a function` before it could even run.
+  Bumped that step to Node 22.
+
 ## [1.2.9] - 2026-09-09
 
 ### Fixed
