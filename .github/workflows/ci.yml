@@ -31,4 +31,4 @@ jobs:
           node-version: 20
 
       - name: Validate top-level HTML pages
-        run: npx --yes html-validate *.html
+        run: npx --yes html-validate@11 *.html

@@ -4,6 +4,16 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.2.9] - 2026-09-09
+
+### Fixed
+- `html-validate` was run unpinned in CI, so an upstream release silently
+  started enforcing rules this repo never met (`<button>` missing
+  `type="button"`, the JS-populated footer version link having no
+  accessible name if the version fetch fails, and an inline `style=""` on
+  the engine/profiles hero). Fixed all three and pinned the CI step to
+  `html-validate@11` so a future release can't do this again.
+
 ## [1.2.8] - 2026-09-09
 
 ### Fixed

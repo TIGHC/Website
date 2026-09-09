@@ -170,6 +170,7 @@ code {
   margin-bottom: 22px;
 }
 .hero-meta { margin-bottom: 10px; }
+.profiles-hero .hero-meta { margin-bottom: 12px; }
 .hero-warning {
   color: var(--text-dim);
   font-size: 0.85rem;
