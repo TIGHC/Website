@@ -496,7 +496,9 @@ code {
   font-size: 0.8rem;
   color: #4e4c5e;
   margin-left: 10px;
+  text-decoration: none;
 }
+.footer-ver:hover { color: var(--text-dim); }
 
 /* Tablet */
 @media (max-width: 1000px) {

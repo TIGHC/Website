@@ -4,6 +4,11 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.2.8] - 2026-09-09
+
+### Fixed
+- Footer version label (`Website vX.X.X`) on all 9 pages was plain text; now links to `/changelogs`, matching the linked-version-badge pattern used on SecretGen, Kittens, and AutoScroll
+
 ## [1.2.7] - 2026-09-09
 
 ### Changed
