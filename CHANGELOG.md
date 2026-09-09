@@ -4,6 +4,11 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.2.7] - 2026-09-09
+
+### Changed
+- Legal pages' shared `contact@stuxie.dev` address split by purpose: `legal@stuxie.dev` for legal/privacy/copyright questions and licensing/reuse requests, `hello@stuxie.dev` for general questions, accessibility feedback, and security reports — matching the convention used across other StuxieDev/Stux.Group sites
+
 ## [1.2.6] - 2026-09-08
 
 ### Added
