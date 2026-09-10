@@ -4,6 +4,35 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.5.4] - 2026-09-10
+
+### Fixed
+- **Theme toggle floated in the middle of the header on mobile** -
+  `.header-inner` is a flex row with `justify-content: space-between`
+  across `.brand`, `.site-nav`, `.theme-toggle`, and `.nav-toggle`; once
+  the mobile breakpoint hides `.site-nav` (`display: none` removes it from
+  the flex flow), the remaining three visible items - brand, theme toggle,
+  hamburger - get evenly distributed, stranding the theme toggle dead
+  center instead of next to the hamburger. Fixed by wrapping the theme
+  toggle and hamburger in a `.header-controls` div, so `.header-inner`
+  always resolves to exactly `brand | nav | controls` regardless of which
+  of those three are visible. Verified with `getBoundingClientRect()` -
+  toggle and hamburger now sit adjacent at the right edge.
+- **The nav didn't collapse to the hamburger menu until 760px**, but the
+  full desktop nav (8 links, the GitHub pill, and the theme toggle) needs
+  ~850px to lay out on one line - between roughly 760-870px it was still
+  shown, visibly squeezed and wrapping mid-item ("Get started" splitting
+  across two lines). Split the nav-collapse rules out of the general
+  "Mobile" breakpoint into their own `@media (max-width: 900px)` block, so
+  the switch to the hamburger happens before the squeeze, not after.
+
+### Changed
+- **Author link now points to `https://stuxie.dev`** instead of
+  `https://github.com/StuxieDev` - the "By StuxieDev" footer link on all
+  12 pages, and `README.md`'s footer link. The GitHub avatar image
+  (`github.com/StuxieDev.png`) is unaffected - that's still the only place
+  to fetch it from.
+
 ## [1.5.3] - 2026-09-10
 
 ### Fixed

@@ -173,6 +173,19 @@ code {
   :root:not([data-theme]) .theme-toggle .fa-moon { display: none; }
 }
 
+/* Groups the theme toggle and hamburger together as one flex item, so
+   .header-inner's justify-content: space-between always resolves to just
+   brand | nav | controls - without this, hiding .site-nav on mobile
+   (display: none removes it from the flex flow) leaves the theme toggle
+   as its own flex child and space-between strands it in the middle of
+   the header instead of next to the hamburger. */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -627,8 +640,13 @@ code {
   .footer-brand { grid-column: 1 / -1; }
 }
 
-/* Mobile */
-@media (max-width: 760px) {
+/* Nav collapse - a wider breakpoint than the rest of the "Mobile" block
+   below: the full nav (8 links + GitHub pill + theme toggle) needs ~850px
+   to lay out on one line without squeezing/wrapping, well above the point
+   the rest of the page's content actually needs to reflow. Switching this
+   later than that would leave a visibly cramped in-between zone where the
+   desktop nav is still shown but doesn't have room for it. */
+@media (max-width: 900px) {
   .nav-toggle { display: flex; }
   .site-nav {
     display: none;
@@ -655,7 +673,10 @@ code {
     text-align: center;
     border-radius: 6px;
   }
+}
 
+/* Mobile */
+@media (max-width: 760px) {
   .grid-3, .grid-2, .legal-grid { grid-template-columns: 1fr; }
   .hero { padding: 48px 0 40px; }
   h2 { font-size: 1.5rem; }
