@@ -4,6 +4,47 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.4.0] - 2026-09-10
+
+### Added
+- **Light/dark theme support** - every page now respects the visitor's OS
+  `prefers-color-scheme`, plus a manual toggle button (sun/moon icon) in the
+  header that overrides it, persisted in `localStorage` and applied by an
+  inline `<head>` script before `style.css` loads (no flash of the wrong
+  theme). All themeable colors moved into CSS custom properties in
+  `style.css`'s `:root` with a light-palette override block, replacing every
+  previously hardcoded hex/rgba color (header/mobile-nav backgrounds, the
+  age-gate scrim, `code` styling, the hero glow, and all changelog/release
+  status-label colors).
+- **Font Awesome Free, vendored locally** under `assets/fontawesome/`
+  (solid + brands styles, no CDN - see the Theming section of
+  [README.md](README.md) for why) - used for the header's GitHub link, the
+  new theme-toggle icon, and every footer link.
+- **Footer version badges** - the footer now shows `Engine vX.Y.Z`,
+  `Profiles vX.Y.Z`, and `Website vX.Y.Z` together (previously only the
+  Website version was shown, and only as an easy-to-miss link label).
+
+### Changed
+- **Footer reorganized** into a brand column plus two labeled link groups
+  ("Project": Engine repo, Website repo, Profiles repo, Releases,
+  Changelogs; "More": Issues & contact, By StuxieDev, Boring Legal Stuff),
+  each link now icon-prefixed. Previously all links sat in one flat,
+  ungrouped row, and the "Changelog" link's own label was overwritten by
+  `versions.js` to show a version number instead - it's now a plain
+  "Changelogs" link, with the version shown separately as static text.
+  Added a "Website repo" link, and renamed the plain "GitHub" link to
+  "Engine repo" now that there's more than one repo linked from here.
+- **`index.html`'s "Get started" and "Game profiles" sections** no longer
+  mention git submodules or `--recurse-submodules` (Engine dropped the
+  `profiles/` submodule back in v3.9.1 - profiles are downloaded
+  automatically on first launch instead) and no longer tell readers to
+  `cd TIGHC` after cloning (the repo is named `Engine`, so `git clone`
+  creates an `Engine/` directory, not `TIGHC/`). Also dropped a stray
+  `python cli.py` mention now that Engine v5.0.0 removed the CLI.
+- **"TIGHC-Profiles" renamed to "TIGHC Profiles"** (no hyphen) everywhere
+  it's used as a display name across this site's pages, matching the
+  correct project name.
+
 ## [1.3.2] - 2026-09-10
 
 ### Changed

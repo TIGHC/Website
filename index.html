@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function () {
+  try {
+    var t = localStorage.getItem("tighc-theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TIGHC — The Intiface Game Haptics Controller</title>
 <meta name="description" content="TIGHC links your keyboard and mouse input to a Buttplug/Intiface haptic toy while you game, with per-game profiles, per-motor targeting, and a full GUI. Open source, Windows &amp; Linux/Steam Deck.">
@@ -18,6 +24,9 @@
 <meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.3.2">
 <link rel="icon" type="image/png" href="assets/icon.png?v=1.3.2">
 <link rel="shortcut icon" href="assets/favicon.ico?v=1.3.2">
+<link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css?v=6.7.2">
+<link rel="stylesheet" href="assets/fontawesome/css/solid.min.css?v=6.7.2">
+<link rel="stylesheet" href="assets/fontawesome/css/brands.min.css?v=6.7.2">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,8 +59,12 @@
       <a href="/changelogs">Changelogs</a>
       <a href="/releases">Releases</a>
       <a href="#get-started">Get started</a>
-      <a href="https://github.com/TIGHC/Engine" class="nav-gh">GitHub</a>
+      <a href="https://github.com/TIGHC/Engine" class="nav-gh"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
     </nav>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
+    </button>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -177,9 +190,9 @@
       <h2>Game profiles</h2>
       <p class="section-lede">
         Profiles live in a separate, shared repository —
-        <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC-Profiles</a> —
-        checked out as a submodule, so new games and updates ship
-        independently of the engine itself.
+        <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC Profiles</a> —
+        downloaded automatically on first launch, so new games and updates
+        ship independently of the engine itself.
       </p>
       <p class="section-note">
         See the <a href="/profiles">full profiles page</a> for the
@@ -196,13 +209,11 @@
   <section id="get-started" class="section section-alt">
     <div class="container">
       <h2>Get started</h2>
-      <p class="section-lede">Clone with submodules so the bundled profiles come with it:</p>
-      <pre class="code-block"><code>git clone --recurse-submodules https://github.com/TIGHC/Engine.git
-cd TIGHC
+      <p class="section-lede">Clone and run:</p>
+      <pre class="code-block"><code>git clone https://github.com/TIGHC/Engine.git
+cd Engine
 python gui.py</code></pre>
       <p class="section-note">
-        Already cloned without <code>--recurse-submodules</code>? Run
-        <code>git submodule update --init</code> once from the repo root.
         Prefer not to install Python at all? Grab a standalone executable
         from the <a href="/releases">Releases page</a> instead.
       </p>
@@ -238,23 +249,41 @@ python gui.py</code></pre>
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <img src="assets/icon.png?v=1.3.2" alt="" class="footer-icon">
-      <span>TIGHC — The Intiface Game Haptics Controller</span>
-      <a class="footer-ver" href="/changelogs" data-version="website" data-version-prefix="Website " aria-label="View changelog">Changelog</a>
+    <div class="footer-brand">
+      <a href="/" class="footer-brand-link">
+        <img src="assets/icon.png?v=1.3.2" alt="" class="footer-icon">
+        <span>TIGHC</span>
+      </a>
+      <p class="footer-tagline">The Intiface Game Haptics Controller</p>
+      <p class="footer-versions">
+        <span data-version="engine" data-version-prefix="Engine ">Engine vX.Y.Z</span>
+        <span data-version="profiles" data-version-prefix="Profiles ">Profiles vX.Y.Z</span>
+        <span data-version="website" data-version-prefix="Website ">Website v1.3.2</span>
+      </p>
     </div>
-    <div class="footer-links">
-      <a href="https://github.com/TIGHC/Engine">GitHub</a>
-      <a href="https://github.com/TIGHC/Profiles">Profiles repo</a>
-      <a href="https://github.com/TIGHC/Engine/issues">Issues &amp; contact</a>
-      <a href="https://github.com/StuxieDev">By StuxieDev</a>
-      <a href="/legal">Boring Legal Stuff</a>
+    <div class="footer-col">
+      <h3 class="footer-heading">Project</h3>
+      <a href="https://github.com/TIGHC/Engine"><i class="fa-brands fa-github" aria-hidden="true"></i> Engine repo</a>
+      <a href="https://github.com/TIGHC/Website"><i class="fa-brands fa-github" aria-hidden="true"></i> Website repo</a>
+      <a href="https://github.com/TIGHC/Profiles"><i class="fa-brands fa-github" aria-hidden="true"></i> Profiles repo</a>
+      <a href="/releases"><i class="fa-solid fa-download" aria-hidden="true"></i> Releases</a>
+      <a href="/changelogs"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Changelogs</a>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-heading">More</h3>
+      <a href="https://github.com/TIGHC/Engine/issues"><i class="fa-solid fa-comment" aria-hidden="true"></i> Issues &amp; contact</a>
+      <a href="https://github.com/StuxieDev"><i class="fa-solid fa-user" aria-hidden="true"></i> By StuxieDev</a>
+      <a href="/legal"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Boring Legal Stuff</a>
     </div>
   </div>
-  <p class="footer-note">
-    Unaffiliated with Intiface/Nonpolynomial Labs. Requires your own
-    Buttplug/Intiface-compatible hardware. 18+ only.
-  </p>
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="footer-note">
+        Unaffiliated with Intiface/Nonpolynomial Labs. Requires your own
+        Buttplug/Intiface-compatible hardware. 18+ only.
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script src="script.js"></script>

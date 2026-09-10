@@ -2,22 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function () {
+  try {
+    var t = localStorage.getItem("tighc-theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profiles — TIGHC</title>
-<meta name="description" content="Every game profile bundled with TIGHC-Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
+<meta name="description" content="Every game profile bundled with TIGHC Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
 <link rel="canonical" href="https://tighc.stuxie.dev/profiles">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TIGHC">
 <meta property="og:title" content="Profiles — TIGHC">
-<meta property="og:description" content="Every game profile bundled with TIGHC-Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
+<meta property="og:description" content="Every game profile bundled with TIGHC Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
 <meta property="og:url" content="https://tighc.stuxie.dev/profiles">
 <meta property="og:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.3.2">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Profiles — TIGHC">
-<meta name="twitter:description" content="Every game profile bundled with TIGHC-Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
+<meta name="twitter:description" content="Every game profile bundled with TIGHC Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
 <meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.3.2">
 <link rel="icon" type="image/png" href="assets/icon.png?v=1.3.2">
 <link rel="shortcut icon" href="assets/favicon.ico?v=1.3.2">
+<link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css?v=6.7.2">
+<link rel="stylesheet" href="assets/fontawesome/css/solid.min.css?v=6.7.2">
+<link rel="stylesheet" href="assets/fontawesome/css/brands.min.css?v=6.7.2">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -49,8 +58,12 @@
       <a href="/changelogs">Changelogs</a>
       <a href="/releases">Releases</a>
       <a href="/#get-started">Get started</a>
-      <a href="https://github.com/TIGHC/Engine" class="nav-gh">GitHub</a>
+      <a href="https://github.com/TIGHC/Engine" class="nav-gh"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
     </nav>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
+    </button>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -68,8 +81,8 @@
       </p>
       <p class="hero-sub">
         Every profile below ships in
-        <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC-Profiles</a>,
-        checked out as a submodule of the main repo. Each one
+        <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC Profiles</a>,
+        downloaded automatically on first launch. Each one
         maps a game's default keybinds to vibration intensity ranges —
         pressing a key fires the vibration, holding sustains it, releasing
         stops it. TIGHC auto-selects the matching profile from the focused
@@ -94,9 +107,9 @@
           <code>window_titles</code> plus <code>bindings</code> to match —
           or use the GUI's <strong>Profiles → New profile...</strong>
           button to do it interactively. Details in the
-          <a href="https://github.com/TIGHC/Profiles#adding-a-new-profile" target="_blank" rel="noopener">TIGHC-Profiles README</a>.
+          <a href="https://github.com/TIGHC/Profiles#adding-a-new-profile" target="_blank" rel="noopener">TIGHC Profiles README</a>.
           Want to share it back? Open a PR against
-          <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC-Profiles</a>.
+          <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC Profiles</a>.
         </p>
       </div>
 
@@ -107,23 +120,41 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <img src="assets/icon.png?v=1.3.2" alt="" class="footer-icon">
-      <span>TIGHC — The Intiface Game Haptics Controller</span>
-      <a class="footer-ver" href="/changelogs" data-version="website" data-version-prefix="Website " aria-label="View changelog">Changelog</a>
+    <div class="footer-brand">
+      <a href="/" class="footer-brand-link">
+        <img src="assets/icon.png?v=1.3.2" alt="" class="footer-icon">
+        <span>TIGHC</span>
+      </a>
+      <p class="footer-tagline">The Intiface Game Haptics Controller</p>
+      <p class="footer-versions">
+        <span data-version="engine" data-version-prefix="Engine ">Engine vX.Y.Z</span>
+        <span data-version="profiles" data-version-prefix="Profiles ">Profiles vX.Y.Z</span>
+        <span data-version="website" data-version-prefix="Website ">Website v1.3.2</span>
+      </p>
     </div>
-    <div class="footer-links">
-      <a href="https://github.com/TIGHC/Engine">GitHub</a>
-      <a href="https://github.com/TIGHC/Profiles">Profiles repo</a>
-      <a href="https://github.com/TIGHC/Engine/issues">Issues &amp; contact</a>
-      <a href="https://github.com/StuxieDev">By StuxieDev</a>
-      <a href="/legal">Boring Legal Stuff</a>
+    <div class="footer-col">
+      <h3 class="footer-heading">Project</h3>
+      <a href="https://github.com/TIGHC/Engine"><i class="fa-brands fa-github" aria-hidden="true"></i> Engine repo</a>
+      <a href="https://github.com/TIGHC/Website"><i class="fa-brands fa-github" aria-hidden="true"></i> Website repo</a>
+      <a href="https://github.com/TIGHC/Profiles"><i class="fa-brands fa-github" aria-hidden="true"></i> Profiles repo</a>
+      <a href="/releases"><i class="fa-solid fa-download" aria-hidden="true"></i> Releases</a>
+      <a href="/changelogs"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Changelogs</a>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-heading">More</h3>
+      <a href="https://github.com/TIGHC/Engine/issues"><i class="fa-solid fa-comment" aria-hidden="true"></i> Issues &amp; contact</a>
+      <a href="https://github.com/StuxieDev"><i class="fa-solid fa-user" aria-hidden="true"></i> By StuxieDev</a>
+      <a href="/legal"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Boring Legal Stuff</a>
     </div>
   </div>
-  <p class="footer-note">
-    Unaffiliated with Intiface/Nonpolynomial Labs. Requires your own
-    Buttplug/Intiface-compatible hardware. 18+ only.
-  </p>
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="footer-note">
+        Unaffiliated with Intiface/Nonpolynomial Labs. Requires your own
+        Buttplug/Intiface-compatible hardware. 18+ only.
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script src="script.js"></script>

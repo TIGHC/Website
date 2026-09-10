@@ -44,4 +44,24 @@
       }
     });
   }
+
+  // Theme toggle - the <head> inline script (see every page's <head>)
+  // already applied any stored explicit choice before first paint; this
+  // just handles the click, flipping between "light" and "dark" and
+  // persisting the choice. With nothing stored, style.css's
+  // prefers-color-scheme media query is what's actually in effect, so the
+  // "current" theme is read from that rather than assumed.
+  var themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var root = document.documentElement;
+      var current = root.getAttribute("data-theme");
+      if (!current) {
+        current = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+      }
+      var next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("tighc-theme", next); } catch (e) {}
+    });
+  }
 })();

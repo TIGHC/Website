@@ -134,7 +134,7 @@
           gridEl.appendChild(renderCard(profile));
         });
 
-        statusEl.textContent = profiles.length + " profile" + (profiles.length === 1 ? "" : "s") + " loaded from TIGHC-Profiles.";
+        statusEl.textContent = profiles.length + " profile" + (profiles.length === 1 ? "" : "s") + " loaded from TIGHC Profiles.";
       })
       .catch(function (err) {
         statusEl.innerHTML = "Couldn't load profiles from GitHub right now (" +
