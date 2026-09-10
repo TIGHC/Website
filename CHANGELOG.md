@@ -4,6 +4,20 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.5.0] - 2026-09-10
+
+### Added
+- **Cache-busting extended to every first-party static asset** - `style.css`
+  and every first-party `<script src>` (`script.js`, `dev-config.js`,
+  `versions.js`, `profiles.js`/`changelogs.js`/`releases.js`) now carry a
+  `?v=X.Y.Z` query string tied to `VERSION.md`, matching the treatment
+  `assets/logo.png`/`assets/icon.png`/`assets/favicon.ico` already had.
+  Previously a CSS/JS change could leave visitors on stale cached code
+  indefinitely, with no release-time signal that anything was wrong.
+  `CONTRIBUTING.md`'s versioned-asset rule is updated to match: every
+  release now hand-bumps every `?v=` string to the new `VERSION.md` across
+  all 12 pages, not just when the three original asset files change.
+
 ## [1.4.1] - 2026-09-10
 
 ### Changed
