@@ -4,6 +4,15 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.9.2] - 2026-09-10
+
+### Changed
+- **Footer's "A StuxieDev Project" link is now underlined only on hover**
+  (was always underlined) - `.footer-note a` had its own hardcoded
+  `text-decoration: underline`, overriding the site-wide convention (every
+  other link, via the base `a`/`a:hover` rules, is underlined only on
+  hover). Matches the same fix just made in Engine's GUI About tab.
+
 ## [1.9.1] - 2026-09-10
 
 ### Fixed
