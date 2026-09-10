@@ -6,8 +6,11 @@ default: it writes dev-config.js (gitignored, never deployed) so
 profiles.js/changelogs.js/versions.js fetch Engine/Profiles/Website content
 from the sibling checkouts next to this one (../Engine, ../Profiles) instead
 of GitHub - so local edits to those repos' CHANGELOG.md/VERSION.md/profiles
-show up here without pushing first. Pass --no-dev-mode to fetch from GitHub
-instead, matching production.
+show up here without pushing first - and reveals the `#dev-banner` element
+every page already carries (hidden by default), same env-banner treatment
+as Stuxs.Tools. Pass --no-dev-mode to fetch from GitHub instead, matching
+production (the banner then stays hidden, since dev-config.js is never
+written).
 """
 import http.server
 import json
@@ -38,7 +41,7 @@ def parse_args(argv):
     return port, dev_mode
 
 
-def write_dev_config(dev_mode):
+def write_dev_config(dev_mode, port):
     path = os.path.join(WEB_DIR, "dev-config.js")
     if not dev_mode:
         if os.path.exists(path):
@@ -52,8 +55,18 @@ def write_dev_config(dev_mode):
         "    profiles: '/dev-sibling/profiles',",
         "    website: '/dev-sibling/website'",
         "  },",
-        "  profilesApi: '/dev-api/profiles-contents'",
+        "  profilesApi: '/dev-api/profiles-contents',",
+        "  port: %d" % port,
         "};",
+        "(function () {",
+        "  var banner = document.getElementById('dev-banner');",
+        "  var detail = document.getElementById('dev-banner-detail');",
+        "  if (detail) {",
+        "    detail.textContent = 'TIGHC Website running on :' + window.TIGHC_DEV.port +",
+        "      ' \\u2014 Engine/Profiles content served from local sibling checkouts, not GitHub.';",
+        "  }",
+        "  if (banner) banner.hidden = false;",
+        "})();",
         "console.log('[TIGHC dev mode] Engine/Profiles/Website content is loaded from local sibling checkouts, not GitHub.');",
     ]
     with open(path, "w", encoding="utf-8") as f:
@@ -100,7 +113,7 @@ class DevHandler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     port, dev_mode = parse_args(sys.argv[1:])
-    write_dev_config(dev_mode)
+    write_dev_config(dev_mode, port)
 
     print("TIGHC Website running at http://127.0.0.1:%d" % port)
     if dev_mode:

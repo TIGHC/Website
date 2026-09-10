@@ -47,7 +47,9 @@ Defaults to port 8000. This serves the site the way GitHub Pages does and
 forces dev mode on by default, which writes `dev-config.js` (gitignored,
 never deployed) so `profiles.js`/`changelogs.js`/`versions.js` load
 Engine/Profiles/Website content from `../Engine` and `../Profiles` instead
-of GitHub.
+of GitHub, and reveals an amber "Development Mode" banner at the top of
+every page (same treatment as Stuxs.Tools) so it's never ambiguous whether
+you're looking at the local build or the live site.
 
 - `--no-dev-mode` — fetch from GitHub instead, matching production, to test
   production behavior locally
@@ -58,9 +60,10 @@ always come from GitHub, same as production.
 
 ## 3. Verify it's working
 
-- Visit `http://127.0.0.1:8000` — you should see the console log
-  `[TIGHC dev mode] Engine/Profiles/Website content is loaded from local
-  sibling checkouts, not GitHub.`
+- Visit `http://127.0.0.1:8000` — you should see the amber "Development
+  Mode" banner across the top of the page, and the same info as a console
+  log: `[TIGHC dev mode] Engine/Profiles/Website content is loaded from
+  local sibling checkouts, not GitHub.`
 - Visit `/engine.html` — the version badge should match your local
   `../Engine/VERSION.md`, not whatever's currently on GitHub
 - Visit `/profiles.html` — should list the folders in your local

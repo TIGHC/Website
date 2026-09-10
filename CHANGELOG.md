@@ -4,6 +4,21 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.8.0] - 2026-09-10
+
+### Added
+- **Visible "Development Mode" banner**, matching Stuxs.Tools' `env-banner`
+  treatment exactly (amber bar, same class names, same layout) - previously
+  `DEV_MODE` only logged to the browser/terminal console, with no on-page
+  signal that you weren't looking at the live site. Every page now carries
+  a `#dev-banner` element, hidden by default; `dev-server.py`'s
+  `write_dev_config()` reveals it and fills in the detail text (port +
+  what's being served from local sibling checkouts) only when `dev-config.js`
+  is written, i.e. only when `DEV_MODE` is actually on. `--no-dev-mode`
+  removes `dev-config.js` entirely, so the banner stays hidden and the page
+  matches production exactly - verified both ways against a live local
+  server. `DEV_GUIDE.md` updated to mention it.
+
 ## [1.7.0] - 2026-09-10
 
 ### Added
