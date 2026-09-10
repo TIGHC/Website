@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.5.2** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.5.3** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics

@@ -4,6 +4,22 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.5.3] - 2026-09-10
+
+### Fixed
+- **`assets/logo.png`/`icon.png`/`favicon.ico` still had a visible dark
+  speckled fringe around every letter/ring** (reported against
+  `raw.githubusercontent.com/TIGHC/Engine/.../logo.png`, which is byte-for-
+  byte the same file as this repo's copy) - v1.4.1's and v1.5.2's fixes
+  only thresholded out very-low-alpha pixels, which caught the faint haze
+  extending to the canvas edges but missed a second, separate shadow layer
+  sitting right at the shape edges with real, visible opacity. Confirmed
+  with a 3x-scaled before/after comparison. Fixed properly this time: any
+  pixel with alpha > 0 whose RGB is dark-and-not-purple is zeroed,
+  regardless of its alpha level. `favicon.ico` regenerated from the
+  recleaned source. Bumped every page's `?v=` cache-busting query string
+  to `1.5.3`.
+
 ## [1.5.2] - 2026-09-10
 
 ### Fixed
