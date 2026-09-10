@@ -4,6 +4,30 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.10.0] - 2026-09-10
+
+### Added
+- **Guides section**: a new `/guides` hub (mirroring `/legal`'s hub +
+  sub-page pattern) linking to three platform-specific setup guides -
+  `/guides/windows`, `/guides/macos`, and `/guides/linux`. The Linux guide
+  replaces Engine's `LINUX_GUIDE.md` as what visitors here get linked to
+  (that file still exists in the Engine repo for anyone browsing it
+  directly on GitHub); the Windows and macOS guides are new, covering the
+  standalone executable vs. running from source, SmartScreen, and (for
+  macOS) the Accessibility/Input Monitoring permissions `pynput` needs plus
+  Gatekeeper. Linked from the footer's "Project" column on every page, and
+  from `index.html`'s platform cards and `engine.html`'s Linux section
+  (both of which previously linked the Linux guide out to a raw GitHub
+  blob URL).
+
+### Fixed
+- **Footer's "Written & Maintained by StuxieDev" link pointed at
+  `projects.stuxie.dev`** on every page - stale since the byline/project
+  link convention was corrected (the personal byline links to
+  `stuxie.dev`; the separate "A StuxieDev Project" line keeps
+  `projects.stuxie.dev`) everywhere else (READMEs, Engine's GUI) but never
+  updated here.
+
 ## [1.9.2] - 2026-09-10
 
 ### Changed

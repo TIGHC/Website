@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>(function () {
+  try {
+    var t = localStorage.getItem("tighc-theme");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux &amp; Steam Deck | Guides — TIGHC</title>
+<meta name="description" content="Set up TIGHC on Linux and Steam Deck Desktop Mode: the X11 requirement, installing dependencies, Intiface Central, and troubleshooting.">
+<link rel="canonical" href="https://tighc.stuxie.dev/guides/linux">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TIGHC">
+<meta property="og:title" content="Linux &amp; Steam Deck | Guides — TIGHC">
+<meta property="og:description" content="Set up TIGHC on Linux and Steam Deck Desktop Mode: the X11 requirement, installing dependencies, Intiface Central, and troubleshooting.">
+<meta property="og:url" content="https://tighc.stuxie.dev/guides/linux">
+<meta property="og:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.10.0">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Linux &amp; Steam Deck | Guides — TIGHC">
+<meta name="twitter:description" content="Set up TIGHC on Linux and Steam Deck Desktop Mode: the X11 requirement, installing dependencies, Intiface Central, and troubleshooting.">
+<meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.10.0">
+<link rel="icon" type="image/png" href="../assets/icon.png?v=1.10.0">
+<link rel="shortcut icon" href="../assets/favicon.ico?v=1.10.0">
+<link rel="stylesheet" href="../assets/fontawesome/css/fontawesome.min.css?v=7.3.1">
+<link rel="stylesheet" href="../assets/fontawesome/css/solid.min.css?v=7.3.1">
+<link rel="stylesheet" href="../assets/fontawesome/css/brands.min.css?v=7.3.1">
+<link rel="stylesheet" href="../style.css?v=1.10.0">
+</head>
+<body>
+
+<div class="env-banner env-banner-dev" id="dev-banner" hidden><span><strong class="env-banner-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Development Mode</strong><span class="env-banner-detail" id="dev-banner-detail"></span></span></div>
+
+<div id="age-gate" class="age-gate">
+  <div class="age-gate-box">
+    <img src="../assets/logo.png?v=1.10.0" alt="TIGHC" class="age-gate-logo">
+    <p><strong>This site describes 18+ software.</strong></p>
+    <p>TIGHC connects to and controls adult haptic/sex toy devices based on
+    your keyboard and mouse input while gaming. It's intended only for
+    adults aged 18 or older.</p>
+    <p class="age-gate-terms">By continuing, you agree to our <a href="/legal/terms">Terms and Ethics of Use</a>.</p>
+    <div class="age-gate-actions">
+      <button type="button" id="age-confirm" class="btn btn-accent">I'm 18 or older — enter</button>
+      <a href="https://www.google.com" class="btn btn-ghost">Leave</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand">
+      <img src="../assets/logo.png?v=1.10.0" alt="TIGHC" class="brand-logo">
+    </a>
+    <nav class="site-nav">
+      <a href="/#features">Features</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/engine">Engine</a>
+      <a href="/profiles">Profiles</a>
+      <a href="/changelogs">Changelogs</a>
+      <a href="/releases">Releases</a>
+      <a href="https://github.com/TIGHC/Engine" class="nav-gh"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+    </nav>
+    <div class="header-controls">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero profiles-hero">
+    <div class="container hero-inner">
+      <h1 class="page-title">Linux &amp; Steam Deck</h1>
+      <p class="hero-sub">Fully supported, including Steam Deck's Desktop Mode. Here's the full walkthrough.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <a href="/guides" class="legal-back">&larr; Guides</a>
+      <div class="legal-prose">
+        <p>TIGHC's primary target is Windows, but the engine also runs on Linux —
+        including Steam Deck's <strong>Desktop Mode</strong>. This guide walks
+        through the Linux-specific setup end to end. For everything else
+        (profiles, the GUI, global settings, cover art), the
+        <a href="https://github.com/TIGHC/Engine#readme">main README</a> applies
+        exactly as written — this guide only covers what's different on Linux.</p>
+
+        <p>Not covered here: Steam Deck's <strong>Game Mode</strong>. Game Mode
+        doesn't run arbitrary Python GUIs, so TIGHC has to run from Desktop Mode
+        — alongside your game, not launched instead of it. If you're on a
+        regular Linux desktop (not a Steam Deck) the rest of this guide still
+        applies; just skip the Steam Deck-specific steps.</p>
+
+        <div class="card" style="margin:24px 0;">
+          <p style="margin:0;"><strong>Looking ahead:</strong> a pre-compiled
+          executable (covering both Linux and Windows) is in the works,
+          packaged so it can be added as a non-Steam game shortcut instead of
+          needing a Python environment — which should make Game Mode support
+          possible. It should work on any SteamOS device in principle, not
+          just Steam Deck specifically, but this is a roadmap item, not a
+          current capability — it hasn't been built, tested, or verified yet.</p>
+        </div>
+
+        <h2>Why an X11 session is required</h2>
+        <p>Two things TIGHC depends on — detecting which window currently has
+        focus (so it knows which profile to switch to), and pynput's global
+        keyboard/mouse capture (so it can react to input while a game has
+        focus, not just while TIGHC's own window does) — both need
+        <strong>X11</strong>, not Wayland.</p>
+        <p>This isn't a bug to work around later: Wayland's security model
+        <em>deliberately</em> doesn't let one app see what window another app
+        has focused, or listen to another app's input. That's normally a good
+        thing (it's why a random Wayland app can't keylog everything you
+        type), but it's exactly what a "vibrate based on what you're doing
+        in-game" tool needs to do. As of SteamOS 3.8, Desktop Mode defaults to
+        Wayland, so this needs switching before anything else here will work.</p>
+
+        <h2>1. Switch to the X11 session (Steam Deck)</h2>
+        <p>From Desktop Mode, open a terminal (Konsole) and run:</p>
+        <pre class="code-block"><code>steamos-session-select plasma-x11-persistent</code></pre>
+        <p>This logs you out and back into an X11 Plasma session —
+        "persistent" means it stays your default until you change it again.
+        Switch back to Wayland any time the same way:</p>
+        <pre class="code-block"><code>steamos-session-select plasma-wayland-persistent</code></pre>
+        <p>There's no real downside to leaving X11 as your Desktop Mode
+        default if you mainly use Desktop Mode for TIGHC — Game Mode is
+        unaffected either way, since it always uses its own gamescope session
+        regardless of which Desktop Mode session you've picked.</p>
+        <p>On a regular Linux desktop (not Steam Deck), the equivalent is just
+        picking an X11 session at your display manager's login screen instead
+        of a Wayland one (exact steps depend on your distro/desktop
+        environment).</p>
+
+        <h2>2. Get Python, pip, and the repo</h2>
+        <p>Steam Deck's SteamOS ships Python 3, but confirm pip and Tkinter
+        (needed for <code>gui.py</code>) are both available:</p>
+        <pre class="code-block"><code>python3 --version
+python3 -m pip --version
+python3 -c "import tkinter"</code></pre>
+        <p>If <code>pip</code> is missing: <code>python3 -m ensurepip
+        --upgrade</code>. If <code>tkinter</code> errors with
+        <code>ModuleNotFoundError</code>, your distro likely splits it into a
+        separate package (e.g. <code>python3-tk</code> on Debian/Ubuntu-based
+        distros, <code>tk</code> on Arch); SteamOS's own Python normally has
+        it built in.</p>
+        <p>Clone the repo:</p>
+        <pre class="code-block"><code>git clone https://github.com/TIGHC/Engine.git
+cd Engine</code></pre>
+        <p>Then install dependencies:</p>
+        <pre class="code-block"><code>python3 -m pip install --user -r requirements.txt</code></pre>
+        <p><code>requirements.txt</code> pulls in <code>python-xlib</code>
+        automatically on Linux (it's marked Linux-only, so Windows installs
+        never see it) — this is what implements the X11 focused-window
+        lookup. <code>--user</code> avoids touching SteamOS's read-only
+        system Python; a virtualenv (<code>python3 -m venv .venv</code>)
+        works too if you prefer one.</p>
+
+        <h2>3. Install Intiface Central</h2>
+        <p><a href="https://intiface.com/central/">Intiface Central</a> — the
+        app that actually talks to your Bluetooth toy over the Buttplug
+        protocol — ships a Linux AppImage (and a
+        <a href="https://flathub.org/en/apps/com.nonpolynomial.intiface_central">Flathub</a>
+        build). Download whichever you prefer, make the AppImage executable
+        if needed (<code>chmod +x Intiface_Central-*.AppImage</code>), and run
+        it. Steam Deck's built-in Bluetooth should work with it like any other
+        Linux Bluetooth adapter — pair your toy from Intiface Central's device
+        scan the same way you would on Windows.</p>
+
+        <h2>4. Run TIGHC</h2>
+        <p>Same command as everywhere else:</p>
+        <pre class="code-block"><code>python3 gui.py       # interactive configurator (needs the X11 session from step 1)</code></pre>
+        <p>It still shows the 18+ age-gate exactly as on Windows.</p>
+
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li><strong>Haptics never trigger, even mid-game.</strong> Almost
+          always means the foreground-window lookup is returning nothing —
+          either you're still on the Wayland session (go back to step 1), or
+          <code>python-xlib</code> didn't install (check
+          <code>python3 -c "import Xlib"</code> doesn't error).</li>
+          <li><strong>A specific game's profile never matches, but others
+          do.</strong> Some games (particularly ones running through certain
+          Proton/compatibility layers) don't set the modern
+          <code>_NET_WM_NAME</code> window property, only the older
+          <code>WM_NAME</code> one. TIGHC already falls back to
+          <code>WM_NAME</code> automatically: if a profile still won't match,
+          open a terminal and check what title the window actually reports
+          (e.g. via <code>xdotool getactivewindow getwindowname</code> if you
+          have <code>xdotool</code> installed, or <code>xprop WM_NAME</code>
+          and click the window) and compare it against that profile's
+          <code>window_titles</code>.</li>
+          <li><strong><code>gui.py</code> opens with no visible window, or
+          the terminal just hangs.</strong> Confirm you're actually in an X11
+          session (<code>echo $XDG_SESSION_TYPE</code> should print
+          <code>x11</code>, not <code>wayland</code>) — a leftover Wayland
+          session is the most common cause here too.</li>
+          <li><strong>Bluetooth pairing issues in Intiface Central.</strong>
+          This is a Buttplug/Intiface-level concern, not a TIGHC one — check
+          Intiface Central's own docs/Discord if your toy won't pair; TIGHC
+          only talks to devices <em>through</em> Intiface Central's WebSocket
+          connection, it never touches Bluetooth directly.</li>
+        </ul>
+
+        <h2>Still stuck?</h2>
+        <p>Open an issue on <a href="https://github.com/TIGHC/Engine/issues">GitHub</a>
+        with what you've tried and what happened.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-brand-link">
+        <img src="../assets/icon.png?v=1.10.0" alt="" class="footer-icon">
+        <span>TIGHC</span>
+      </a>
+      <p class="footer-tagline">The Intiface Game Haptics Controller</p>
+      <p class="footer-versions">
+        <span data-version="engine" data-version-prefix="Engine ">Engine vX.Y.Z</span>
+        <span data-version="profiles" data-version-prefix="Profiles ">Profiles vX.Y.Z</span>
+        <span data-version="website" data-version-prefix="Website ">Website v1.3.2</span>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-heading">Project</h3>
+      <a href="https://github.com/TIGHC/Engine"><i class="fa-brands fa-github" aria-hidden="true"></i> Engine repo</a>
+      <a href="https://github.com/TIGHC/Website"><i class="fa-brands fa-github" aria-hidden="true"></i> Website repo</a>
+      <a href="https://github.com/TIGHC/Profiles"><i class="fa-brands fa-github" aria-hidden="true"></i> Profiles repo</a>
+      <a href="/releases"><i class="fa-solid fa-download" aria-hidden="true"></i> Releases</a>
+      <a href="/changelogs"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Changelogs</a>
+      <a href="/guides"><i class="fa-solid fa-book" aria-hidden="true"></i> Guides</a>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-heading">More</h3>
+      <a href="https://github.com/TIGHC/Engine/issues"><i class="fa-solid fa-comment" aria-hidden="true"></i> Issues &amp; contact</a>
+      <a href="/legal"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Boring Legal Stuff</a>
+      <a href="https://stuxie.dev">Written &amp; Maintained by <img src="https://github.com/StuxieDev.png" alt="" class="footer-avatar"> StuxieDev</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="footer-note">
+        Unaffiliated with Intiface/Nonpolynomial Labs. Requires your own
+        Buttplug/Intiface-compatible hardware. 18+ only.
+      </p>
+      <p class="footer-note"><a href="https://projects.stuxie.dev">A StuxieDev Project</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=1.10.0"></script>
+<script src="../dev-config.js?v=1.10.0"></script>
+<script src="../versions.js?v=1.10.0"></script>
+</body>
+</html>

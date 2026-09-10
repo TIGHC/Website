@@ -9,25 +9,25 @@
   } catch (e) {}
 })();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opt-Out Preferences | Legal — TIGHC</title>
-<meta name="description" content="TIGHC sells or shares no personal data, so there's nothing to opt out of.">
-<link rel="canonical" href="https://tighc.stuxie.dev/legal/opt-out">
+<title>Guides — TIGHC</title>
+<meta name="description" content="Platform-specific setup guides for TIGHC: Windows, macOS, and Linux/Steam Deck.">
+<link rel="canonical" href="https://tighc.stuxie.dev/guides">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TIGHC">
-<meta property="og:title" content="Opt-Out Preferences | Legal — TIGHC">
-<meta property="og:description" content="TIGHC sells or shares no personal data, so there's nothing to opt out of.">
-<meta property="og:url" content="https://tighc.stuxie.dev/legal/opt-out">
+<meta property="og:title" content="Guides — TIGHC">
+<meta property="og:description" content="Platform-specific setup guides for TIGHC: Windows, macOS, and Linux/Steam Deck.">
+<meta property="og:url" content="https://tighc.stuxie.dev/guides">
 <meta property="og:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.10.0">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Opt-Out Preferences | Legal — TIGHC">
-<meta name="twitter:description" content="TIGHC sells or shares no personal data, so there's nothing to opt out of.">
+<meta name="twitter:title" content="Guides — TIGHC">
+<meta name="twitter:description" content="Platform-specific setup guides for TIGHC: Windows, macOS, and Linux/Steam Deck.">
 <meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.10.0">
-<link rel="icon" type="image/png" href="../assets/icon.png?v=1.10.0">
-<link rel="shortcut icon" href="../assets/favicon.ico?v=1.10.0">
-<link rel="stylesheet" href="../assets/fontawesome/css/fontawesome.min.css?v=7.3.1">
-<link rel="stylesheet" href="../assets/fontawesome/css/solid.min.css?v=7.3.1">
-<link rel="stylesheet" href="../assets/fontawesome/css/brands.min.css?v=7.3.1">
-<link rel="stylesheet" href="../style.css?v=1.10.0">
+<link rel="icon" type="image/png" href="assets/icon.png?v=1.10.0">
+<link rel="shortcut icon" href="assets/favicon.ico?v=1.10.0">
+<link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css?v=7.3.1">
+<link rel="stylesheet" href="assets/fontawesome/css/solid.min.css?v=7.3.1">
+<link rel="stylesheet" href="assets/fontawesome/css/brands.min.css?v=7.3.1">
+<link rel="stylesheet" href="style.css?v=1.10.0">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
 
 <div id="age-gate" class="age-gate">
   <div class="age-gate-box">
-    <img src="../assets/logo.png?v=1.10.0" alt="TIGHC" class="age-gate-logo">
+    <img src="assets/logo.png?v=1.10.0" alt="TIGHC" class="age-gate-logo">
     <p><strong>This site describes 18+ software.</strong></p>
     <p>TIGHC connects to and controls adult haptic/sex toy devices based on
     your keyboard and mouse input while gaming. It's intended only for
@@ -51,7 +51,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="brand">
-      <img src="../assets/logo.png?v=1.10.0" alt="TIGHC" class="brand-logo">
+      <img src="assets/logo.png?v=1.10.0" alt="TIGHC" class="brand-logo">
     </a>
     <nav class="site-nav">
       <a href="/#features">Features</a>
@@ -78,29 +78,38 @@
 
   <section class="hero profiles-hero">
     <div class="container hero-inner">
-      <h1 class="page-title">Opt-Out Preferences</h1>
-      <p class="hero-sub">The short version: there's nothing to opt out of.</p>
+      <h1 class="page-title">Guides</h1>
+      <p class="hero-sub">
+        Platform-specific setup, one step at a time. Pick the one that
+        matches what you're running TIGHC on.
+      </p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <a href="/legal" class="legal-back">&larr; Boring Legal Stuff</a>
-      <div class="legal-prose">
-
-        <h2>No data sale or sharing</h2>
-        <p>Laws like California's CCPA/CPRA give you the right to opt out of the sale or sharing of your personal data. TIGHC has nothing to opt out of in that sense — this site and the Engine software don't collect personal data for advertising or analytics, so there's none to sell or share.</p>
-
-        <h2>What actually happens</h2>
-        <p>The only outside data flow is your own browser fetching public content directly from GitHub (profiles, changelogs, version numbers — see the <a href="/legal/privacy">Privacy Policy</a>) or, if you opt in inside the Engine, your own SteamGridDB API key fetching cover art. Neither is something TIGHC could sell even if it wanted to — we're not in the middle of either request.</p>
-
-        <h2>Do Not Track</h2>
-        <p>Because this site runs no tracking scripts, a browser's "Do Not Track" signal has no additional effect here — there's nothing being tracked either way.</p>
-
-        <h2>Questions</h2>
-        <p>If you have questions about data handling not covered here, open an issue on <a href="https://github.com/TIGHC/Engine/issues">GitHub</a> or email <a href="mailto:legal@stuxie.dev">legal@stuxie.dev</a>.</p>
-
+      <div class="legal-grid">
+        <a href="/guides/windows" class="legal-card">
+          <h3><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</h3>
+          <p>The primary target. Running from source vs. the standalone executable, and the one OneDrive gotcha worth knowing about.</p>
+        </a>
+        <a href="/guides/macos" class="legal-card">
+          <h3><i class="fa-brands fa-apple" aria-hidden="true"></i> macOS</h3>
+          <p>Python/Tkinter setup, and the Accessibility + Input Monitoring permissions TIGHC needs to see your keystrokes and the focused window.</p>
+        </a>
+        <a href="/guides/linux" class="legal-card">
+          <h3><i class="fa-brands fa-linux" aria-hidden="true"></i> Linux &amp; Steam Deck</h3>
+          <p>Fully supported, including Steam Deck Desktop Mode — why an X11 session is required, and the full walkthrough.</p>
+        </a>
       </div>
+      <p class="section-note">
+        None of these cover something you're hitting? The
+        <a href="https://github.com/TIGHC/Engine#readme">main README</a>
+        applies identically on every platform for everything not
+        platform-specific (profiles, the GUI, global settings, cover art) —
+        or open an issue on
+        <a href="https://github.com/TIGHC/Engine/issues">GitHub</a>.
+      </p>
     </div>
   </section>
 
@@ -110,7 +119,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="footer-brand-link">
-        <img src="../assets/icon.png?v=1.10.0" alt="" class="footer-icon">
+        <img src="assets/icon.png?v=1.10.0" alt="" class="footer-icon">
         <span>TIGHC</span>
       </a>
       <p class="footer-tagline">The Intiface Game Haptics Controller</p>
@@ -147,8 +156,8 @@
   </div>
 </footer>
 
-<script src="../script.js?v=1.10.0"></script>
-<script src="../dev-config.js?v=1.10.0"></script>
-<script src="../versions.js?v=1.10.0"></script>
+<script src="script.js?v=1.10.0"></script>
+<script src="dev-config.js?v=1.10.0"></script>
+<script src="versions.js?v=1.10.0"></script>
 </body>
 </html>

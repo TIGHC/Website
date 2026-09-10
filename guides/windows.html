@@ -9,18 +9,18 @@
   } catch (e) {}
 })();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opt-Out Preferences | Legal — TIGHC</title>
-<meta name="description" content="TIGHC sells or shares no personal data, so there's nothing to opt out of.">
-<link rel="canonical" href="https://tighc.stuxie.dev/legal/opt-out">
+<title>Windows | Guides — TIGHC</title>
+<meta name="description" content="Set up TIGHC on Windows: the standalone executable, running from source, SmartScreen, and Intiface Central.">
+<link rel="canonical" href="https://tighc.stuxie.dev/guides/windows">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TIGHC">
-<meta property="og:title" content="Opt-Out Preferences | Legal — TIGHC">
-<meta property="og:description" content="TIGHC sells or shares no personal data, so there's nothing to opt out of.">
-<meta property="og:url" content="https://tighc.stuxie.dev/legal/opt-out">
+<meta property="og:title" content="Windows | Guides — TIGHC">
+<meta property="og:description" content="Set up TIGHC on Windows: the standalone executable, running from source, SmartScreen, and Intiface Central.">
+<meta property="og:url" content="https://tighc.stuxie.dev/guides/windows">
 <meta property="og:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.10.0">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Opt-Out Preferences | Legal — TIGHC">
-<meta name="twitter:description" content="TIGHC sells or shares no personal data, so there's nothing to opt out of.">
+<meta name="twitter:title" content="Windows | Guides — TIGHC">
+<meta name="twitter:description" content="Set up TIGHC on Windows: the standalone executable, running from source, SmartScreen, and Intiface Central.">
 <meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.10.0">
 <link rel="icon" type="image/png" href="../assets/icon.png?v=1.10.0">
 <link rel="shortcut icon" href="../assets/favicon.ico?v=1.10.0">
@@ -78,28 +78,85 @@
 
   <section class="hero profiles-hero">
     <div class="container hero-inner">
-      <h1 class="page-title">Opt-Out Preferences</h1>
-      <p class="hero-sub">The short version: there's nothing to opt out of.</p>
+      <h1 class="page-title">Windows</h1>
+      <p class="hero-sub">The primary target - the most-tested platform, and the simplest setup.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <a href="/legal" class="legal-back">&larr; Boring Legal Stuff</a>
+      <a href="/guides" class="legal-back">&larr; Guides</a>
       <div class="legal-prose">
+        <p>Windows is where TIGHC gets the most testing, and has two setup
+        paths: the standalone executable (no Python needed) or running from
+        source. For everything not covered here (profiles, the GUI, global
+        settings, cover art), the
+        <a href="https://github.com/TIGHC/Engine#readme">main README</a>
+        applies exactly as written.</p>
 
-        <h2>No data sale or sharing</h2>
-        <p>Laws like California's CCPA/CPRA give you the right to opt out of the sale or sharing of your personal data. TIGHC has nothing to opt out of in that sense — this site and the Engine software don't collect personal data for advertising or analytics, so there's none to sell or share.</p>
+        <h2>Option A: the standalone executable</h2>
+        <p>Grab <code>TIGHC-windows-vX.Y.Z.exe</code> from the
+        <a href="/releases">Releases page</a> and run it directly - no
+        Python install required. The first time you run it, Windows
+        SmartScreen will likely show "Windows protected your PC" - this is
+        expected for any executable that isn't code-signed (a paid
+        certificate this hobby project doesn't have), not a sign anything's
+        wrong. Click <strong>More info</strong>, then <strong>Run
+        anyway</strong>.</p>
 
-        <h2>What actually happens</h2>
-        <p>The only outside data flow is your own browser fetching public content directly from GitHub (profiles, changelogs, version numbers — see the <a href="/legal/privacy">Privacy Policy</a>) or, if you opt in inside the Engine, your own SteamGridDB API key fetching cover art. Neither is something TIGHC could sell even if it wanted to — we're not in the middle of either request.</p>
+        <h2>Option B: running from source</h2>
+        <pre class="code-block"><code>git clone https://github.com/TIGHC/Engine.git
+cd Engine
+python -m pip install -r requirements.txt
+python gui.py</code></pre>
+        <p>If <code>python</code> isn't recognized, try <code>py</code>
+        instead, or call your Python install by its full path. This mostly
+        comes up if Python wasn't added to <code>PATH</code> during
+        install, or - specifically - if your user folder is OneDrive-synced:
+        OneDrive's placeholder/on-demand files can confuse how Windows
+        resolves the <code>python</code> command from a folder under it.</p>
 
-        <h2>Do Not Track</h2>
-        <p>Because this site runs no tracking scripts, a browser's "Do Not Track" signal has no additional effect here — there's nothing being tracked either way.</p>
+        <h2>Install Intiface Central</h2>
+        <p><a href="https://intiface.com/central/">Intiface Central</a> -
+        the app that actually talks to your Bluetooth toy over the Buttplug
+        protocol - ships a native Windows build. Install it, pair your toy
+        through Windows' own Bluetooth settings first if it isn't already
+        paired, then scan for it from Intiface Central's device list.</p>
 
-        <h2>Questions</h2>
-        <p>If you have questions about data handling not covered here, open an issue on <a href="https://github.com/TIGHC/Engine/issues">GitHub</a> or email <a href="mailto:legal@stuxie.dev">legal@stuxie.dev</a>.</p>
+        <h2>Run TIGHC</h2>
+        <p>Either launch the executable, or (from source):</p>
+        <pre class="code-block"><code>python gui.py</code></pre>
+        <p>This opens an interactive window: connect to Intiface, scan for
+        devices, assign nicknames to each motor/capability, build or edit
+        game profiles, tune global settings, and start/stop the haptics
+        engine - all in one place, after confirming the 18+ age-gate.</p>
 
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li><strong>SmartScreen won't let the executable run at
+          all.</strong> Make sure you clicked <strong>More info</strong>
+          first - the "Run anyway" option only appears after that, not on
+          the initial warning screen.</li>
+          <li><strong><code>'python' is not recognized as an internal or
+          external command</code>.</strong> Try <code>py</code> instead, or
+          reinstall Python from
+          <a href="https://www.python.org/downloads/">python.org</a> and
+          check "Add python.exe to PATH" during setup.</li>
+          <li><strong>Haptics never trigger, even mid-game.</strong> Confirm
+          Intiface Central shows your device as connected first - TIGHC
+          only drives devices Intiface Central itself already sees, it
+          doesn't talk to Bluetooth directly.</li>
+          <li><strong>A specific game's profile never matches.</strong>
+          Confirm the game's window title actually matches what's in that
+          profile's <code>window_titles</code>.</li>
+          <li><strong>Bluetooth pairing issues in Intiface Central.</strong>
+          This is a Buttplug/Intiface-level concern, not a TIGHC one - check
+          Intiface Central's own docs/Discord if your toy won't pair.</li>
+        </ul>
+
+        <h2>Still stuck?</h2>
+        <p>Open an issue on <a href="https://github.com/TIGHC/Engine/issues">GitHub</a>
+        with what you've tried and what happened.</p>
       </div>
     </div>
   </section>
