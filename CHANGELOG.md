@@ -4,6 +4,22 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.3.0] - 2026-09-10
+
+### Added
+- **Releases page (`/releases`)** - lists every TIGHC Engine release, fetched
+  live from the GitHub Releases API, with per-platform download links
+  (Windows/Linux/macOS) and rendered release notes. Linked from the nav on
+  every page. `releases.js` handles both the current asset naming
+  (`TIGHC-<platform>-vX.Y.Z`) and the pre-v5.0.0 naming that included a
+  gui/cli target segment, so old releases still render sensible labels.
+
+### Changed
+- Removed remaining `cli.py` mentions from `index.html`/`engine.html`/
+  `legal/privacy.html`, and added macOS to the platform lists on the landing
+  page and Engine page, matching Engine v5.0.0 (which dropped the CLI and
+  added macOS release builds).
+
 ## [1.2.10] - 2026-09-09
 
 ### Fixed

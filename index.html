@@ -49,6 +49,7 @@
       <a href="/engine">Engine</a>
       <a href="/profiles">Profiles</a>
       <a href="/changelogs">Changelogs</a>
+      <a href="/releases">Releases</a>
       <a href="#get-started">Get started</a>
       <a href="https://github.com/TIGHC/Engine" class="nav-gh">GitHub</a>
     </nav>
@@ -120,8 +121,7 @@
           <h3>Full GUI, or hand-edit JSON</h3>
           <p>Connect to Intiface, scan devices, assign nicknames, build
           profiles, and tune settings — all from one interactive window.
-          Prefer the terminal? <code>cli.py</code> runs the same engine
-          headlessly from whatever's already on disk.</p>
+          Every setting is also a plain JSON file you can edit by hand.</p>
         </div>
         <div class="card">
           <h3>Test mode &amp; panic key</h3>
@@ -204,10 +204,10 @@ python gui.py</code></pre>
       <p class="section-note">
         Already cloned without <code>--recurse-submodules</code>? Run
         <code>git submodule update --init</code> once from the repo root.
-        Prefer the terminal? <code>python cli.py</code> runs headlessly
-        instead of opening the GUI.
+        Prefer not to install Python at all? Grab a standalone executable
+        from the <a href="/releases">Releases page</a> instead.
       </p>
-      <div class="grid grid-2 platform-grid">
+      <div class="grid grid-3 platform-grid">
         <div class="card">
           <h3>Windows</h3>
           <p>The primary target. Run <code>python gui.py</code> and follow
@@ -221,10 +221,16 @@ python gui.py</code></pre>
           <a href="https://github.com/TIGHC/Engine/blob/main/LINUX_GUIDE.md" target="_blank" rel="noopener">Linux guide</a>
           for the full walkthrough.</p>
         </div>
+        <div class="card">
+          <h3>macOS</h3>
+          <p>Run <code>python gui.py</code>, or grab the
+          <code>TIGHC-macos-*</code> executable from the
+          <a href="/releases">Releases page</a> — no Python install needed.</p>
+        </div>
       </div>
       <div class="hero-actions get-started-actions">
         <a href="https://github.com/TIGHC/Engine" class="btn btn-accent">Repository &amp; full docs</a>
-        <a href="https://github.com/TIGHC/Engine/blob/main/CHANGELOG.md" class="btn btn-ghost">Changelog</a>
+        <a href="/releases" class="btn btn-ghost">Releases</a>
       </div>
     </div>
   </section>

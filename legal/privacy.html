@@ -49,6 +49,7 @@
       <a href="/engine">Engine</a>
       <a href="/profiles">Profiles</a>
       <a href="/changelogs">Changelogs</a>
+      <a href="/releases">Releases</a>
       <a href="https://github.com/TIGHC/Engine" class="nav-gh">GitHub</a>
     </nav>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">
@@ -88,12 +89,12 @@
         <p>The only thing this site stores in your browser is a single flag, <code>tighc-age-confirmed</code>, set once you click through the 18+ notice so you're not shown it again. It never leaves your device and can be cleared any time via your browser's site data settings.</p>
 
         <h2>The Engine software</h2>
-        <p>TIGHC Engine (<code>gui.py</code>/<code>cli.py</code>) runs entirely on your own computer. It talks to two things, both of which you configure yourself:</p>
+        <p>TIGHC Engine (<code>gui.py</code>) runs entirely on your own computer. It talks to two things, both of which you configure yourself:</p>
         <ul>
           <li><strong>Your Intiface Central instance</strong> — a WebSocket connection to whatever address you point it at, normally running on your own machine.</li>
           <li><strong>SteamGridDB</strong> — only if you opt in and provide your own API key in Settings, to fetch cover art. Your key is stored in plain text in <code>configs/steamgriddb_config.json</code> on your machine, never transmitted anywhere but SteamGridDB's API.</li>
         </ul>
-        <p>Everything else — profiles, device nicknames, haptics settings, the age confirmation you give the app on first launch — is stored locally in <code>%APPDATA%\TIGHC\</code> (or <code>~/.local/share/TIGHC/</code> on Linux) and is never uploaded anywhere. The one exception: on first launch, the Engine downloads the current profiles from the public <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC/Profiles</a> repo — a one-way download, not a data submission.</p>
+        <p>Everything else — profiles, device nicknames, haptics settings, the age confirmation you give the app on first launch — is stored locally in <code>%APPDATA%\TIGHC\</code> (<code>~/Library/Application Support/TIGHC/</code> on macOS, <code>~/.local/share/TIGHC/</code> on Linux) and is never uploaded anywhere. The one exception: on first launch, the Engine downloads the current profiles from the public <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC/Profiles</a> repo — a one-way download, not a data submission.</p>
 
         <h2>Children's privacy</h2>
         <p>Both this site and the Engine software are intended only for adults aged 18 or older, and neither is directed at children. The 18+ notice on this site and the confirmation the Engine asks for on first launch are self-certification, not identity verification — we have no way to verify age, and don't collect any information that would let us try.</p>

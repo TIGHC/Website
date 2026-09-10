@@ -463,6 +463,46 @@ code {
   margin: 0 0 8px;
 }
 
+/* Releases page */
+.release-status {
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+.release-error { color: #d98c8c; }
+
+.release-list { display: flex; flex-direction: column; gap: 20px; }
+
+.release-card { padding: 22px 24px; }
+.release-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.release-version {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  font-family: "Consolas", "Fira Mono", monospace;
+}
+.release-date { color: var(--text-dim); font-size: 0.85rem; }
+.release-badge-pre { background: rgba(255, 179, 71, 0.15); color: #ffbe6a; }
+
+.release-body p { color: var(--text-dim); font-size: 0.92rem; margin: 0 0 8px; }
+.release-body a { color: var(--accent); }
+
+.release-assets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 12px;
+}
+.release-asset { padding: 8px 16px; font-size: 0.88rem; }
+
+.release-source-link { font-size: 0.85rem; }
+
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--border);

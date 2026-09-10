@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.2.8** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.3.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics
@@ -31,21 +31,23 @@ Repository: https://github.com/TIGHC/Website
 
 ```
 index.html        # landing page - what TIGHC is, features, how it works, get started
-engine.html       # install/usage docs for the Engine (GUI, CLI, profiles, devices, settings)
+engine.html       # install/usage docs for the Engine (GUI, profiles, devices, settings)
 profiles.html     # game profiles, fetched live from TIGHC-Profiles via the GitHub API
 changelogs.html   # tabbed changelog viewer (Engine / Profiles / Website)
+releases.html     # TIGHC Engine releases, fetched live from the GitHub Releases API
 legal.html        # "Boring Legal Stuff" hub, linking to legal/*.html
 legal/            # privacy, terms, cookies, imprint, disclaimer, opt-out pages
 style.css         # shared styles across all pages
 script.js         # 18+ notice (shown once per browser, via localStorage)
 profiles.js       # fetches profiles.html's content from github.com/TIGHC/Profiles
 changelogs.js     # fetches and renders CHANGELOG.md from each repo for changelogs.html
+releases.js       # fetches and renders TIGHC/Engine's GitHub releases for releases.html
 versions.js       # fetches VERSION.md from each repo on load and populates version badges site-wide
 dev-config.js     # written by dev-server.py at startup - gitignored, never deployed
 dev-server.py     # local dev server shared by dev-server.sh/.bat (see Local preview below)
 dev-server.sh     # Unix wrapper for dev-server.py
 dev-server.bat    # Windows wrapper for dev-server.py
-tests/            # node:test unit tests for changelogs.js/profiles.js/versions.js
+tests/            # node:test unit tests for changelogs.js/profiles.js/releases.js/versions.js
 assets/           # logo/icon/author avatar, copied from the main TIGHC repo's assets/
 CNAME             # custom domain (tighc.stuxie.dev) for GitHub Pages
 ```
@@ -70,11 +72,11 @@ remove it unless the domain setup is changing too. See
 
 ## Testing
 
-The parsing/formatting logic in `changelogs.js`, `profiles.js`, and
-`versions.js` (changelog Markdown parsing, profile binding/label
-formatting and sorting, version-string handling) has unit tests under
-`tests/`, using Node's built-in test runner - no extra dependencies
-required:
+The parsing/formatting logic in `changelogs.js`, `profiles.js`, `releases.js`,
+and `versions.js` (changelog Markdown parsing, profile binding/label
+formatting and sorting, release-notes formatting and asset labeling/sorting,
+version-string handling) has unit tests under `tests/`, using Node's
+built-in test runner - no extra dependencies required:
 
 ```
 node --test
