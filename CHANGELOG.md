@@ -4,6 +4,16 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.6.1] - 2026-09-10
+
+### Changed
+- **Reverted the footer's "A StuxieDev Project" wording from v1.6.0** - the
+  avatar icon belongs specifically with "Written & Maintained by [icon]
+  StuxieDev", not "A [icon] StuxieDev Project". The footer link now reads
+  "Written & Maintained by StuxieDev", avatar between "by" and
+  "StuxieDev", still linking to `https://projects.stuxie.dev`.
+- Bumped every page's `?v=` cache-busting query string to `1.6.1`.
+
 ## [1.6.0] - 2026-09-10
 
 ### Changed

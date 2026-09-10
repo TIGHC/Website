@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.6.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.6.1** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics
@@ -113,4 +113,4 @@ See [LICENSE.md](LICENSE.md).
 
 ---
 
-*A <img src="https://github.com/StuxieDev.png" height="14" alt="StuxieDev" valign="middle"> [StuxieDev](https://projects.stuxie.dev) Project.*
+*Written & Maintained by <img src="https://github.com/StuxieDev.png" height="14" alt="StuxieDev" valign="middle"> [StuxieDev](https://projects.stuxie.dev).*
