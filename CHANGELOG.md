@@ -4,6 +4,33 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.9.0] - 2026-09-10
+
+### Changed
+- **`assets/logo.png`'s tagline re-rendered as bold vector text** instead of
+  the old low-res raster crop - the previous alpha/color fix (v1.7.0) made
+  it full-opacity but it was still thin and small next to the "TIGHC"
+  wordmark, so it read as an afterthought rather than part of the lockup.
+  The tagline is now rendered fresh at a larger size in Segoe UI Semibold
+  (matching the site's font stack), supersampled and downsampled for crisp
+  edges; the icon and "TIGHC" wordmark pixels are untouched. New size
+  582x126 (was 455x126) - all consuming CSS/Markdown sizes the logo by
+  height or a fixed width with the other dimension left auto, so nothing
+  else needed to change.
+- **Vendored Font Awesome bumped from 6.7.2 to 7.3.1**, the actual latest
+  release - the earlier downgrade to 6.7.2 was based on a misdiagnosed
+  rendering issue that turned out to be a false alarm in browser tooling,
+  not a real FA7 defect.
+
+### Fixed
+- **Dev-mode banner stayed visible even when `hidden`** - `.env-banner`'s
+  `display: flex` (specificity 0,1,0) tied with the browser's native
+  `[hidden] { display: none }` UA rule at equal specificity, and the
+  site's stylesheet loading after the UA stylesheet won the cascade tie.
+  Added `.env-banner[hidden] { display: none; }` (0,2,0) to make the
+  override unambiguous. Verified both directions (`--no-dev-mode` on and
+  off) against a live local server after a hard reload.
+
 ## [1.8.0] - 2026-09-10
 
 ### Added
