@@ -4,6 +4,26 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.3.2] - 2026-09-10
+
+### Changed
+- **Header brand link now shows the full logo** (icon + "TIGHC" wordmark +
+  tagline) instead of just the small icon plus a plain-text "TIGHC" span -
+  `.brand-icon` replaced with `.brand-logo` across all 12 pages.
+
+### Fixed
+- `assets/logo.png` had a large baked-in low-alpha haze (both near-black and
+  near-white, likely leftover shadow/glow layers from the original export)
+  extending all the way to the canvas edges - invisible on a white
+  background, but visible as a dark smudge/box around the logo in the
+  header (which sits on a dark background) and as ~175px of dead space on
+  the right of the 640x160 canvas. Thresholded out any pixel with alpha
+  <= 20 and cropped to the actual content, producing a clean 461x132 image
+  with a true transparent background - same fix as the Engine repo, same
+  file byte-for-byte. Per [CONTRIBUTING.md](CONTRIBUTING.md)'s versioned-
+  asset rule, bumped every page's `?v=` query string from `1.2.6` to
+  `1.3.2` to bust caches on the changed file.
+
 ## [1.3.1] - 2026-09-10
 
 ### Fixed

@@ -97,13 +97,10 @@ code {
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
   color: var(--text);
 }
 .brand:hover { color: var(--text); text-decoration: none; }
-.brand-icon { width: 26px; height: 26px; }
+.brand-logo { height: 28px; width: auto; display: block; }
 .site-nav { display: flex; gap: 20px; align-items: center; }
 .site-nav a { color: var(--text-dim); font-size: 0.95rem; }
 .site-nav a:hover { color: var(--text); text-decoration: none; }
