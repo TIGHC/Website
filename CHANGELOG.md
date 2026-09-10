@@ -4,6 +4,15 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.3.1] - 2026-09-10
+
+### Fixed
+- `README.md` still had the old `## Author` block (avatar image + name)
+  right under the intro, left over from before that was replaced with the
+  standard "Built & Maintained by StuxieDev" footer line - Engine's
+  `README.md` already had this cleaned up, this one was missed. Removed the
+  duplicate block; the footer at the bottom already covers it.
+
 ## [1.3.0] - 2026-09-10
 
 ### Added
