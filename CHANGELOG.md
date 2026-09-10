@@ -4,6 +4,14 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.5.1] - 2026-09-10
+
+### Fixed
+- **Hero tagline wrapped to two lines** on desktop-width viewports -
+  `.hero-tagline`'s `max-width` (640px) was narrower than the text actually
+  needed (~712px), forcing an unnecessary wrap despite plenty of room in the
+  1080px container. Widened to 760px so it renders on one line.
+
 ## [1.5.0] - 2026-09-10
 
 ### Added

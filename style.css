@@ -211,7 +211,7 @@ code {
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0 auto 12px;
-  max-width: 640px;
+  max-width: 760px;
 }
 .hero-sub {
   color: var(--text-dim);
