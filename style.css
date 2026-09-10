@@ -633,6 +633,9 @@ code {
   color: var(--muted);
   text-align: center;
 }
+.footer-note + .footer-note { margin-top: 6px; }
+.footer-note a { color: var(--muted); text-decoration: underline; }
+.footer-note a:hover { color: var(--text-dim); }
 
 /* Tablet */
 @media (max-width: 1000px) {

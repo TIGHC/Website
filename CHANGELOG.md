@@ -4,6 +4,28 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.7.0] - 2026-09-10
+
+### Added
+- **Releases page now notes the CLI's discontinuation** - a line under the
+  hero explaining the headless CLI was dropped in Engine v5.0.0 and no
+  longer ships, so the `(CLI)`-labeled assets on older releases don't read
+  as a currently-supported option.
+- **Footer disclaimer now has a second line, "A StuxieDev Project"**,
+  linking to `https://projects.stuxie.dev`, styled the same muted way as
+  the "Unaffiliated with..." line above it.
+
+### Changed
+- **"Written & Maintained by StuxieDev" moved to the last link** in the
+  footer's "More" column (after "Boring Legal Stuff", was second of
+  three).
+- **`assets/logo.png`'s tagline read as a lighter, washed-out purple** next
+  to the bold "TIGHC" wordmark and the icon - not a different hue, just
+  much lower average opacity from anti-aliasing at its small font size.
+  Boosted its alpha (~3x, capped at 255) and normalized every
+  non-transparent pixel to the same purple used everywhere else.
+- Bumped every page's `?v=` cache-busting query string to `1.7.0`.
+
 ## [1.6.1] - 2026-09-10
 
 ### Changed
