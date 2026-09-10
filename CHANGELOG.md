@@ -4,6 +4,21 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.5.2] - 2026-09-10
+
+### Fixed
+- **`assets/icon.png`/`favicon.ico` had the same baked-in low-alpha haze as
+  `logo.png` did before v1.3.2** - never actually fixed for these two,
+  since that pass only touched `logo.png`. Visible as a soft grey box/halo
+  around the icon, most noticeable on the light theme's near-white
+  backgrounds (the header, in particular). Same fix applied: thresholded
+  out any pixel with alpha <= 20. `favicon.ico` regenerated from the
+  cleaned source at its original size set (16/32/48/64/128/256). Bumped
+  every page's `?v=` cache-busting query string to `1.5.2` so the fix
+  actually reaches visitors' browsers (a Cloudflare/CDN layer in front of
+  the site, if any, would need its own cache purged separately - this repo
+  has no visibility into or control over that).
+
 ## [1.5.1] - 2026-09-10
 
 ### Fixed
