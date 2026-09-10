@@ -4,6 +4,25 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.6.0] - 2026-09-10
+
+### Changed
+- **New icon: a controller silhouette with pulse waves, replacing the
+  bullseye/target rings.** The old mark read as archery or aim-assist, not
+  as a haptics controller - the new one shows the actual mechanism (game
+  input becomes vibration) instead. `assets/icon.png` and `favicon.ico`
+  regenerated from the new mark (same purple, no gradients); `assets/
+  logo.png`'s icon half swapped in, wordmark and tagline pixels unchanged.
+  Proposed and approved via a side-by-side review artifact before
+  touching any repo, including a check that the design still reads
+  clearly at 16px (the earlier attempt kept a D-pad/button detail that
+  washed out below 32px).
+- **Footer author link now reads "A StuxieDev Project"** (was "By
+  StuxieDev"), with the actual GitHub avatar image in place of a generic
+  person icon, linking to `https://projects.stuxie.dev` instead of
+  `https://stuxie.dev`.
+- Bumped every page's `?v=` cache-busting query string to `1.6.0`.
+
 ## [1.5.4] - 2026-09-10
 
 ### Fixed

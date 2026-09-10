@@ -622,6 +622,7 @@ code {
 }
 .footer-col a:hover { color: var(--text); text-decoration: none; }
 .footer-col a i { width: 14px; text-align: center; color: var(--text-dim); font-size: 0.85em; flex-shrink: 0; }
+.footer-avatar { width: 15px; height: 15px; border-radius: 50%; flex-shrink: 0; }
 .footer-bottom {
   border-top: 1px solid var(--border);
   padding: 16px 0;
