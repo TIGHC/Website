@@ -4,6 +4,18 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.9.1] - 2026-09-10
+
+### Fixed
+- **`assets/logo.png`'s tagline was a slightly different shade of purple
+  than the icon and "TIGHC" wordmark** - v1.9.0's re-render used the font
+  rasterizer's anti-aliased blend rather than the icon's exact solid fill
+  color. Re-rendered the tagline in that exact color (`#7C5CFF`) and
+  switched from Segoe UI Semibold to true Segoe UI Bold, so it now reads as
+  one consistent color and weight with the rest of the lockup, just bolder
+  than the surrounding elements as intended. New size 600x126 (was
+  582x126).
+
 ## [1.9.0] - 2026-09-10
 
 ### Changed
