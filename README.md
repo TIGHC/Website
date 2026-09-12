@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.10.1** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.10.2** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics
@@ -21,29 +21,44 @@ Repository: https://github.com/TIGHC/Website
 ## Structure
 
 ```
-index.html        # landing page - what TIGHC is, features, how it works, get started
-engine.html       # install/usage docs for the Engine (GUI, profiles, devices, settings)
-profiles.html     # game profiles, fetched live from TIGHC Profiles via the GitHub API
-changelogs.html   # tabbed changelog viewer (Engine / Profiles / Website)
-releases.html     # TIGHC Engine releases, fetched live from the GitHub Releases API
-legal.html        # "Boring Legal Stuff" hub, linking to legal/*.html
-legal/            # privacy, terms, cookies, imprint, disclaimer, opt-out pages
-guides.html       # setup guides hub, linking to guides/*.html
-guides/           # windows, macos, and linux platform-specific setup guides
-style.css         # shared styles across all pages
-script.js         # 18+ notice, mobile nav toggle, and the light/dark theme toggle
-profiles.js       # fetches profiles.html's content from github.com/TIGHC/Profiles
-changelogs.js     # fetches and renders CHANGELOG.md from each repo for changelogs.html
-releases.js       # fetches and renders TIGHC/Engine's GitHub releases for releases.html
-versions.js       # fetches VERSION.md from each repo on load and populates version badges site-wide
-dev-config.js     # written by dev-server.py at startup - gitignored, never deployed
-dev-server.py     # local dev server shared by dev-server.sh/.bat (see Local preview below)
-dev-server.sh     # Unix wrapper for dev-server.py
-dev-server.bat    # Windows wrapper for dev-server.py
-tests/            # node:test unit tests for changelogs.js/profiles.js/releases.js/versions.js
-assets/           # logo/icon/author avatar, copied from the main TIGHC repo's assets/
-assets/fontawesome/ # Font Awesome Free (vendored, self-hosted - see its own LICENSE.txt)
-CNAME             # custom domain (tighc.stuxie.dev) for GitHub Pages
+index.html                 # landing page - what TIGHC is, features, how it works, get started
+engine.html                 # install/usage docs for the Engine (GUI, profiles, devices, settings)
+profiles.html                # game profiles, fetched live from TIGHC Profiles via the GitHub API
+profiles.js                  # fetches profiles.html's content from github.com/TIGHC/Profiles
+changelogs.html               # tabbed changelog viewer (Engine / Profiles / Website)
+changelogs.js                 # fetches and renders CHANGELOG.md from each repo for changelogs.html
+changelog.html                # redirect alias for /changelogs (singular -> plural)
+releases.html                  # TIGHC Engine releases, fetched live from the GitHub Releases API
+releases.js                    # fetches and renders TIGHC/Engine's GitHub releases for releases.html
+style.css                      # shared styles across all pages
+script.js                      # 18+ notice, mobile nav toggle, and the light/dark theme toggle
+versions.js                    # fetches VERSION.md from each repo on load and populates version badges site-wide
+
+legal.html                     # "Boring Legal Stuff" hub, linking to legal/*.html
+legal/privacy.html, terms.html, cookies.html, imprint.html, disclaimer.html, opt-out.html
+
+guides.html                    # setup guides hub, linking to guides/*.html
+guides/windows.html, macos.html, linux.html   # platform-specific setup guides
+
+assets/icon.png, logo.png, author.png, favicon.ico   # copied from the main TIGHC repo's assets/
+assets/fontawesome/             # Font Awesome Free (vendored, self-hosted - see its own LICENSE.txt)
+
+tests/                          # node:test unit tests for changelogs.js/profiles.js/releases.js/versions.js
+.github/workflows/ci.yml        # runs `node --test` and html-validate on every push/PR
+
+dev-config.js                   # written by dev-server.py at startup - gitignored, never deployed
+dev-server.py                   # local dev server shared by dev-server.sh/.bat (see Local preview below)
+dev-server.sh                   # Unix wrapper for dev-server.py
+dev-server.bat                  # Windows wrapper for dev-server.py
+
+CHANGELOG.md / VERSION.md       # release history + current version (semver)
+CONTRIBUTING.md                 # how to contribute a change
+INSTALL.md                      # deploying a copy of this site elsewhere
+DEV_GUIDE.md                    # running this site locally
+LICENSE.md                      # license text
+commit.sh / commit.bat          # commit + tag a release, reading the version from VERSION.md
+.gitignore
+CNAME                           # custom domain (tighc.stuxie.dev) for GitHub Pages
 ```
 
 ## Theming

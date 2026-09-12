@@ -4,6 +4,26 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.10.2] - 2026-09-12
+
+### Changed
+- **`guides/linux.html`** updated for the Engine's Tk→Qt migration: the
+  Python/Tkinter availability check is now a PySide6/Qt runtime-library
+  note (`libegl1`/`libopengl0` on Debian/Ubuntu-based distros), with a
+  matching new troubleshooting entry for a missing-Qt-platform-plugin
+  error. Also dropped a stale "cover art" mention (the Engine removed
+  that feature) and synced this page's cache-busting `?v=` to match
+  every other page.
+- README's `Structure` section was an abbreviated summary rather than
+  every actual file - rewrote it to exhaustively list the current file
+  set (every `legal/`/`guides/` sub-page individually, every root-level
+  doc/config file).
+
+### Removed
+- **`changelog.js`** — a stray, unreferenced one-line placeholder file
+  (`changelog.html` redirects client-side and never loaded it; same dead
+  file already found and removed from the sibling TWRAR project).
+
 ## [1.10.1] - 2026-09-12
 
 ### Fixed
