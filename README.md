@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.12.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.13.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics
@@ -23,6 +23,7 @@ Repository: https://github.com/TIGHC/Website
 ```
 index.html                 # landing page - what TIGHC is, features, how it works, get started
 404.html                    # custom error page, served automatically by GitHub Pages
+favicon.ico                 # site-root copy browsers fall back to regardless of <link rel="icon">
 engine.html                 # install/usage docs for the Engine (GUI, profiles, devices, settings)
 profiles.html                # game profiles, fetched live from TIGHC Profiles via the GitHub API
 profiles.js                  # fetches profiles.html's content from github.com/TIGHC/Profiles
