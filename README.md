@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.11.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.12.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics
@@ -22,6 +22,7 @@ Repository: https://github.com/TIGHC/Website
 
 ```
 index.html                 # landing page - what TIGHC is, features, how it works, get started
+404.html                    # custom error page, served automatically by GitHub Pages
 engine.html                 # install/usage docs for the Engine (GUI, profiles, devices, settings)
 profiles.html                # game profiles, fetched live from TIGHC Profiles via the GitHub API
 profiles.js                  # fetches profiles.html's content from github.com/TIGHC/Profiles
@@ -34,13 +35,17 @@ style.css                      # shared styles across all pages
 script.js                      # 18+ notice, mobile nav toggle, and the light/dark theme toggle
 versions.js                    # fetches VERSION.md from each repo on load and populates version badges site-wide
 
-legal.html                     # "Boring Legal Stuff" hub, linking to legal/*.html
+legal/index.html               # "Boring Legal Stuff" hub, linking to legal/*.html
 legal/privacy.html, terms.html, cookies.html, imprint.html, disclaimer.html, opt-out.html
 
-guides.html                    # setup guides hub, linking to guides/*.html
+guides/index.html               # setup guides hub, linking to guides/*.html
 guides/windows.html, macos.html, linux.html   # platform-specific setup guides
 guides/install.html            # deploying a copy of this site (see Deploying below)
 guides/developer.html          # running this site locally (see Local preview below)
+guides/steam.html               # adding TIGHC to Steam + applying the library artwork
+
+steam.html                      # Steam library artwork landing page
+assets/steam.html               # redirects to the latest TIGHC_Steam_Assets.zip
 
 assets/icon.png, logo.png, author.png, favicon.ico   # copied from the main TIGHC repo's assets/
 assets/fontawesome/             # Font Awesome Free (vendored, self-hosted - see its own LICENSE.txt)

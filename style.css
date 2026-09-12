@@ -231,6 +231,7 @@ code {
   background: radial-gradient(ellipse at top, var(--hero-glow), transparent 60%);
 }
 .hero-logo { max-width: 340px; width: 100%; margin-bottom: 28px; }
+.error-code { font-size: 5rem; font-weight: 800; color: var(--accent); margin: 0 0 8px; line-height: 1; }
 .hero-tagline {
   font-size: 1.3rem;
   font-weight: 600;
@@ -315,8 +316,25 @@ code {
   padding: 22px;
 }
 .card p { color: var(--text-dim); margin: 0; font-size: 0.95rem; }
+.card-preview-img { width: 100%; border-radius: 8px; margin-bottom: 14px; }
 
 .platform-grid { margin-top: 28px; }
+
+/* Steam artwork */
+.steam-asset-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 24px 0 32px;
+}
+.steam-asset-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.steam-asset-card h3 { margin: 0 0 4px; font-size: 1rem; }
+.steam-asset-card p { color: var(--text-dim); margin: 0; font-size: 0.88rem; }
 
 /* Legal pages */
 .legal-grid {
@@ -416,6 +434,7 @@ code {
 
 /* Profiles page */
 .page-title { font-size: 2rem; margin: 0 0 16px; }
+.page-title-sm { font-size: 1.5rem; }
 .profiles-hero { padding: 56px 0 40px; }
 .profile-status {
   color: var(--text-dim);
@@ -692,7 +711,7 @@ code {
 
 /* Mobile */
 @media (max-width: 760px) {
-  .grid-3, .grid-2, .legal-grid { grid-template-columns: 1fr; }
+  .grid-3, .grid-2, .legal-grid, .steam-asset-grid { grid-template-columns: 1fr; }
   .hero { padding: 48px 0 40px; }
   h2 { font-size: 1.5rem; }
   .hero-logo { max-width: 220px; }

@@ -9,19 +9,19 @@
   } catch (e) {}
 })();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profiles — TIGHC</title>
-<meta name="description" content="Every game profile bundled with TIGHC Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
-<link rel="canonical" href="https://tighc.stuxie.dev/profiles">
+<title>Steam artwork — TIGHC</title>
+<meta name="description" content="Custom Steam library artwork for TIGHC — grid capsules, hero, and logo, ready to apply to your non-Steam game shortcut.">
+<link rel="canonical" href="https://tighc.stuxie.dev/steam">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TIGHC">
-<meta property="og:title" content="Profiles — TIGHC">
-<meta property="og:description" content="Every game profile bundled with TIGHC Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
-<meta property="og:url" content="https://tighc.stuxie.dev/profiles">
-<meta property="og:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.12.0">
+<meta property="og:title" content="Steam artwork — TIGHC">
+<meta property="og:description" content="Custom Steam library artwork for TIGHC — grid capsules, hero, and logo, ready to apply to your non-Steam game shortcut.">
+<meta property="og:url" content="https://tighc.stuxie.dev/steam">
+<meta property="og:image" content="https://tighc.stuxie.dev/assets/steam/wide_cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Profiles — TIGHC">
-<meta name="twitter:description" content="Every game profile bundled with TIGHC Profiles, fetched live from the repo: keybinds, intensity ranges, and window matching for each game.">
-<meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.12.0">
+<meta name="twitter:title" content="Steam artwork — TIGHC">
+<meta name="twitter:description" content="Custom Steam library artwork for TIGHC — grid capsules, hero, and logo, ready to apply to your non-Steam game shortcut.">
+<meta name="twitter:image" content="https://tighc.stuxie.dev/assets/steam/wide_cover.png">
 <link rel="icon" type="image/png" href="assets/icon.png?v=1.12.0">
 <link rel="shortcut icon" href="assets/favicon.ico?v=1.12.0">
 <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.min.css?v=7.3.1">
@@ -56,11 +56,11 @@
     <nav class="site-nav">
       <a href="/#features">Features</a>
       <a href="/#how-it-works">How it works</a>
-      <a href="/profiles" class="active">Profiles</a>
-      <a href="/steam">Steam Artwork</a>
+      <a href="/engine">Engine</a>
+      <a href="/profiles">Profiles</a>
+      <a href="/steam" class="active">Steam Artwork</a>
       <a href="/changelogs">Changelogs</a>
       <a href="/releases">Releases</a>
-      <a href="/#get-started">Get started</a>
       <a href="https://github.com/TIGHC/Engine" class="nav-gh"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
     </nav>
     <div class="header-controls">
@@ -79,45 +79,37 @@
 
   <section class="hero profiles-hero">
     <div class="container hero-inner">
-      <h1 class="page-title">Game profiles</h1>
-      <p class="hero-meta">
-        <span class="badge" data-version="profiles" data-version-prefix="Profiles ">Profiles vX.Y.Z</span>
-        <span class="badge" data-version="engine" data-version-prefix="Engine ">Engine vX.Y.Z</span>
-      </p>
+      <h1 class="page-title">Steam library artwork</h1>
       <p class="hero-sub">
-        Every profile below ships in
-        <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC Profiles</a>,
-        downloaded automatically on first launch. Each one
-        maps a game's default keybinds to vibration intensity ranges —
-        pressing a key fires the vibration, holding sustains it, releasing
-        stops it. TIGHC auto-selects the matching profile from the focused
-        window's title.
+        TIGHC ships with a full set of custom Steam library artwork — grid
+        capsules, a hero banner, and a logo — for adding it to your Steam
+        library as a non-Steam game.
       </p>
+      <div class="hero-actions">
+        <a href="/assets/steam" class="btn btn-accent"><i class="fa-brands fa-steam" aria-hidden="true"></i> Download the artwork (.zip)</a>
+        <a href="/guides/steam" class="btn btn-ghost">How to apply it</a>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-
-      <div id="profile-status" class="profile-status">Loading profiles from
-        <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">github.com/TIGHC/Profiles</a>&hellip;</div>
-
-      <div id="profile-grid" class="profile-grid"></div>
-
-      <div class="card profiles-add-card">
-        <h3>Don't see your game?</h3>
-        <p>
-          Copy an existing profile folder (<code>minecraft/</code> is the
-          most complete example), rename it, and edit
-          <code>window_titles</code> plus <code>bindings</code> to match —
-          or use the GUI's <strong>Profiles → New profile...</strong>
-          button to do it interactively. Details in the
-          <a href="https://github.com/TIGHC/Profiles#adding-a-new-profile" target="_blank" rel="noopener">TIGHC Profiles README</a>.
-          Want to share it back? Open a PR against
-          <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC Profiles</a>.
-        </p>
+      <div class="grid grid-2">
+        <div class="card">
+          <img src="assets/steam/wide_cover.png" alt="TIGHC Steam landscape grid capsule" class="card-preview-img">
+          <h3>Grid capsules</h3>
+          <p>Portrait and landscape capsule art for the Steam library grid view.</p>
+        </div>
+        <div class="card">
+          <img src="assets/steam/background.png" alt="TIGHC Steam library hero background" class="card-preview-img">
+          <h3>Library hero &amp; logo</h3>
+          <p>The wide hero banner shown behind your library page, plus a transparent logo overlay.</p>
+        </div>
       </div>
-
+      <p class="section-note">
+        Want the exact file sizes and how to apply each one in Steam? See the
+        <a href="/guides/steam">full guide</a>.
+      </p>
     </div>
   </section>
 
@@ -168,6 +160,5 @@
 <script src="script.js?v=1.12.0"></script>
 <script src="dev-config.js?v=1.12.0"></script>
 <script src="versions.js?v=1.12.0"></script>
-<script src="profiles.js?v=1.12.0"></script>
 </body>
 </html>

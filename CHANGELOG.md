@@ -4,6 +4,39 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.12.0] - 2026-09-13
+
+### Added
+- **`404.html`** — a custom error page matching the site's own branding
+  (header, footer, age gate, theme) instead of GitHub Pages' generic
+  default, following the same pattern already in place on the TS4RLS and
+  TWRAR websites.
+- **`steam.html`** and **`guides/steam.html`** — a Steam library artwork
+  landing page and setup guide, plus **`assets/steam/`** (grid capsules,
+  hero, logo, icon), synced from the Engine's `create_steam_assets.py` the
+  same way `icon.png`/`logo.png`/`favicon.ico` already are. The `/steam`
+  nav and footer links on every page previously pointed at these before
+  they existed.
+- Regenerated `assets/favicon.ico`, `assets/icon.png`, `assets/logo.png`
+  from the Engine's current branding.
+
+### Changed
+- **`guides.html` → `guides/index.html`** and **`legal.html` →
+  `legal/index.html`** — only pages that are a hub for a subfolder now
+  live at that folder's `index.html`, matching the convention already
+  used on TS4RLS and TWRAR (`steam.html` itself stays flat, since it
+  isn't a hub for other pages).
+
+### Fixed
+- **`dev-server.py` had no local equivalent of GitHub Pages' 404
+  handling and no pretty-URL fallback** — a missing path returned Python's
+  bare `http.server` error page instead of the new `404.html` above, and
+  extensionless routes like `/engine`, `/profiles`, `/changelogs` 404'd
+  locally instead of resolving to their `.html` file the way they do in
+  production. Both are now handled the same way TS4RLS/TWRAR's dev
+  servers already do it.
+- Added the `.error-code` style `404.html` needs to `style.css`.
+
 ## [1.11.0] - 2026-09-12
 
 ### Added

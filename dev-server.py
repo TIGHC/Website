@@ -84,7 +84,36 @@ class DevHandler(http.server.SimpleHTTPRequestHandler):
             if path == prefix or path.startswith(prefix + "/"):
                 rest = path[len(prefix):].lstrip("/")
                 return os.path.join(real_dir, *rest.split("/")) if rest else real_dir
-        return super().translate_path(path)
+        translated = super().translate_path(path)
+        # Pretty URLs: GitHub Pages serves /foo from foo.html - match that
+        # here so /engine, /profiles, /changelogs, /releases, etc. all work
+        # the same locally as they do in production, instead of 404ing
+        # (SimpleHTTPRequestHandler has no extension-optional resolution
+        # of its own). Folder-based hubs like /guides and /legal already
+        # work via the normal directory + trailing-slash-redirect behavior,
+        # since there's no same-named guides.html/legal.html to prefer.
+        if not path.endswith("/"):
+            with_html = translated + ".html"
+            if os.path.isfile(with_html):
+                return with_html
+        return translated
+
+    def send_error(self, code, message=None, explain=None):
+        # GitHub Pages serves 404.html for any missing path in production;
+        # SimpleHTTPRequestHandler has no equivalent, so without this a 404
+        # locally looks nothing like what visitors actually see.
+        if code == 404:
+            not_found = os.path.join(WEB_DIR, "404.html")
+            if os.path.isfile(not_found):
+                with open(not_found, "rb") as f:
+                    body = f.read()
+                self.send_response(404)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+                return
+        super().send_error(code, message, explain)
 
     def do_GET(self):
         if self.path.split("?", 1)[0] == "/dev-api/profiles-contents":
