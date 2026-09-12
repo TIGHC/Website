@@ -4,6 +4,38 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.11.0] - 2026-09-12
+
+### Added
+- **`guides/install.html`** and **`guides/developer.html`** — deploying a
+  copy of this site (GitHub Pages/custom domain/any static host) and
+  running it locally (cloning alongside the Engine and Profiles repos,
+  `dev-server.py`, dev mode), replacing root-level `INSTALL.md`/
+  `DEV_GUIDE.md` with guide pages instead, matching this site's own
+  `guides/` pattern (and the pattern the sibling TS4RLS/TWRAR projects
+  adapted from these very files earlier this session). Linked from
+  `/guides` and from the README's "Local preview"/"Deploying" sections.
+
+### Removed
+- **`INSTALL.md`** and **`DEV_GUIDE.md`** — content moved to the two new
+  guide pages above; README.md/CONTRIBUTING.md now link to those instead.
+
+### Fixed
+- **Stale Tkinter/cover-art references left over from the Engine's
+  Tk→Qt migration and SteamGridDB removal**, across `guides.html`,
+  `guides/macos.html` (a whole "Python and Tkinter" section, now
+  "Python and dependencies" — PySide6 ships its own Qt runtime via pip,
+  unlike Tk, which needed a separate system package), `guides/windows.html`,
+  `engine.html`'s Settings-tab description, and four `legal/*.html`
+  pages whose privacy/terms/disclaimer/opt-out text described data flows
+  (SteamGridDB API key/cover-art fetching) that no longer exist now that
+  the Engine has removed that feature entirely.
+- README's `Structure` section and CONTRIBUTING.md's cache-busting
+  paragraph were both stale in the same way - the latter hardcoded "all
+  12 pages" by name, already wrong before this release added two more;
+  reworded to describe the scope generically instead of enumerating it,
+  so it can't go stale like that again.
+
 ## [1.10.2] - 2026-09-12
 
 ### Changed

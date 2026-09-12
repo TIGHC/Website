@@ -10,7 +10,9 @@ Issues and pull requests are welcome at
 ## Getting set up
 
 No build tooling required - plain HTML/CSS/JS. See the [README](README.md)
-for the file structure and [DEV_GUIDE.md](DEV_GUIDE.md) to preview locally.
+for the file structure and the
+[Developer Guide](https://tighc.stuxie.dev/guides/developer) to preview
+locally.
 
 ## Making a change
 
@@ -44,12 +46,10 @@ and every first-party script tag (`script.js`, `dev-config.js`,
 that page loads). Since this site has no build step to interpolate that
 automatically, and `VERSION.md` gets bumped on every release regardless
 (see above), **every release must hand-bump every `?v=` string to match the
-new `VERSION.md`, across all 12 pages** - `index.html`, `engine.html`,
-`changelogs.html`, `profiles.html`, `releases.html`, `legal.html`, and
-everything under `legal/` (`cookies.html`, `disclaimer.html`, `imprint.html`,
-`opt-out.html`, `privacy.html`, `terms.html`), roughly a dozen references
-each (meta `og:image`/`twitter:image` tags, favicon `<link>`s, inline
-`<img>` logos/icons, the `style.css` `<link>`, and every `<script src>`).
+new `VERSION.md`, across every top-level HTML page and everything under
+`legal/` and `guides/`** - roughly a dozen references each (meta
+`og:image`/`twitter:image` tags, favicon `<link>`s, inline `<img>`
+logos/icons, the `style.css` `<link>`, and every `<script src>`).
 Forgetting this doesn't break anything visibly at release time - it just
 means visitors keep seeing old CSS/JS/images until their cache happens to
 expire on its own. Font Awesome's own CSS/font files under
@@ -61,7 +61,9 @@ copy itself is upgraded, not on every site release.
 
 Merges to `main` publish automatically via GitHub Pages - no separate deploy
 step. Don't remove the `CNAME` file unless the custom domain setup is
-changing too. See [INSTALL.md](INSTALL.md) for self-hosting elsewhere.
+changing too. See the
+[Install Guide](https://tighc.stuxie.dev/guides/install) for self-hosting
+elsewhere.
 
 ## Reporting a bug
 

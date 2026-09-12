@@ -8,7 +8,7 @@
 > controls adult haptic/sex toy devices. Intended for use only by adults aged
 > 18 or older.
 
-**Version 1.10.2** — see [CHANGELOG.md](CHANGELOG.md) for release history.
+**Version 1.11.0** — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Source for [tighc.stuxie.dev](https://tighc.stuxie.dev), the landing site
 for [TIGHC](https://github.com/TIGHC/Engine) (The Intiface Game Haptics
@@ -39,6 +39,8 @@ legal/privacy.html, terms.html, cookies.html, imprint.html, disclaimer.html, opt
 
 guides.html                    # setup guides hub, linking to guides/*.html
 guides/windows.html, macos.html, linux.html   # platform-specific setup guides
+guides/install.html            # deploying a copy of this site (see Deploying below)
+guides/developer.html          # running this site locally (see Local preview below)
 
 assets/icon.png, logo.png, author.png, favicon.ico   # copied from the main TIGHC repo's assets/
 assets/fontawesome/             # Font Awesome Free (vendored, self-hosted - see its own LICENSE.txt)
@@ -53,8 +55,6 @@ dev-server.bat                  # Windows wrapper for dev-server.py
 
 CHANGELOG.md / VERSION.md       # release history + current version (semver)
 CONTRIBUTING.md                 # how to contribute a change
-INSTALL.md                      # deploying a copy of this site elsewhere
-DEV_GUIDE.md                    # running this site locally
 LICENSE.md                      # license text
 commit.sh / commit.bat          # commit + tag a release, reading the version from VERSION.md
 .gitignore
@@ -92,14 +92,16 @@ needed on this side.
 
 ## Local preview
 
-See [DEV_GUIDE.md](DEV_GUIDE.md) to run the site locally.
+See [/guides/developer](https://tighc.stuxie.dev/guides/developer) to run
+the site locally.
 
 ## Deploying
 
 GitHub Pages is configured to serve from this repo's root on `main` - just
 push. The `CNAME` file points the custom domain at GitHub Pages; don't
 remove it unless the domain setup is changing too. See
-[INSTALL.md](INSTALL.md) for self-hosting elsewhere.
+[/guides/install](https://tighc.stuxie.dev/guides/install) for
+self-hosting elsewhere.
 
 ## Testing
 

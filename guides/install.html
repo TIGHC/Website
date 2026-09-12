@@ -9,18 +9,18 @@
   } catch (e) {}
 })();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imprint | Legal — TIGHC</title>
-<meta name="description" content="Who operates TIGHC and this website, and how to reach them.">
-<link rel="canonical" href="https://tighc.stuxie.dev/legal/imprint">
+<title>Install Guide — TIGHC</title>
+<meta name="description" content="Deploying a copy of the TIGHC website: GitHub Pages, custom domains, and any other static host.">
+<link rel="canonical" href="https://tighc.stuxie.dev/guides/install">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TIGHC">
-<meta property="og:title" content="Imprint | Legal — TIGHC">
-<meta property="og:description" content="Who operates TIGHC and this website, and how to reach them.">
-<meta property="og:url" content="https://tighc.stuxie.dev/legal/imprint">
+<meta property="og:title" content="Install Guide — TIGHC">
+<meta property="og:description" content="Deploying a copy of the TIGHC website: GitHub Pages, custom domains, and any other static host.">
+<meta property="og:url" content="https://tighc.stuxie.dev/guides/install">
 <meta property="og:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.11.0">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Imprint | Legal — TIGHC">
-<meta name="twitter:description" content="Who operates TIGHC and this website, and how to reach them.">
+<meta name="twitter:title" content="Install Guide — TIGHC">
+<meta name="twitter:description" content="Deploying a copy of the TIGHC website: GitHub Pages, custom domains, and any other static host.">
 <meta name="twitter:image" content="https://tighc.stuxie.dev/assets/logo.png?v=1.11.0">
 <link rel="icon" type="image/png" href="../assets/icon.png?v=1.11.0">
 <link rel="shortcut icon" href="../assets/favicon.ico?v=1.11.0">
@@ -75,36 +75,108 @@
 </header>
 
 <main id="top">
-
   <section class="hero profiles-hero">
     <div class="container hero-inner">
-      <h1 class="page-title">Imprint</h1>
-      <p class="hero-sub">Who's behind TIGHC, and how to reach them.</p>
+      <h1 class="page-title"><i class="fa-solid fa-server" aria-hidden="true"></i> Install Guide</h1>
+      <p class="hero-sub">Deploying a copy of this website to a real host. Working on the code instead? See the <a href="/guides/developer">Developer Guide</a>.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <a href="/legal" class="legal-back">&larr; Boring Legal Stuff</a>
+      <a href="/guides" class="legal-back">&larr; All guides</a>
       <div class="legal-prose">
 
-        <h2>Operator</h2>
-        <p>TIGHC — the Engine, Profiles, and this website — is built and maintained by <strong><a href="https://stuxie.dev" target="_blank" rel="noopener">StuxieDev</a></strong> (Leo Ridgwell), as an independent, non-commercial open-source project. It isn't operated by a registered company.</p>
+        <h2>Requirements</h2>
+        <p>Nothing beyond a place to serve static files — no PHP, no
+        database, no build step. GitHub Pages (what production uses) or
+        any other static host (Netlify, Vercel, S3, plain Apache/Nginx)
+        all work identically, since it's just HTML/CSS/JS.</p>
 
-        <h2>Hosting</h2>
-        <p>This website is hosted on <strong>GitHub Pages</strong>, served from the <a href="https://github.com/TIGHC/Website" target="_blank" rel="noopener">TIGHC/Website</a> repository. Source code for all three TIGHC repos (Engine, Profiles, Website) is hosted on GitHub.</p>
+        <h2>Option A: GitHub Pages (what production uses)</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <div><p>Push this repo to GitHub.</p></div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div><p>In the repo's <strong>Settings &rarr; Pages</strong>,
+            set the source to <strong>Deploy from a branch</strong>,
+            branch <code>main</code>, folder <code>/ (root)</code>.</p></div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div><p>For a custom domain, set it under
+            <strong>Settings &rarr; Pages &rarr; Custom domain</strong> —
+            GitHub writes/validates the <code>CNAME</code> file for you
+            when you do this via the UI (this repo's <code>CNAME</code>
+            is already set to <code>tighc.stuxie.dev</code>; replace it
+            with your own domain, or remove it to use the default
+            <code>&lt;org&gt;.github.io/Website</code> URL instead). Point
+            your DNS at GitHub Pages per
+            <a href="https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site" target="_blank" rel="noopener">GitHub's custom domain docs</a> —
+            the exact record values are documented there rather than
+            repeated here, since GitHub can change them.</p></div>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <div><p>Push to <code>main</code> — GitHub Pages redeploys
+            automatically. No separate build or deploy step.</p></div>
+          </li>
+        </ol>
 
-        <h2>Contact</h2>
-        <p>For legal, privacy, or copyright inquiries: <a href="mailto:legal@stuxie.dev">legal@stuxie.dev</a>.</p>
-        <p>For general questions or feedback: <a href="mailto:hello@stuxie.dev">hello@stuxie.dev</a>, or open an issue on <a href="https://github.com/TIGHC/Engine/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <h2>Option B: Any other static host</h2>
+        <p>Upload everything in this repo except <code>.git/</code>,
+        <code>dev-server.py</code>/<code>.sh</code>/<code>.bat</code>,
+        and <code>dev-config.js</code> (if present — it's gitignored and
+        only exists locally) to your host's document root. That's it —
+        there's no server-side code to configure.</p>
+        <p>If you're not using GitHub Pages, delete (or don't upload)
+        <code>CNAME</code> — it only matters to GitHub Pages.</p>
 
-        <h2>Responsibility for content</h2>
-        <p>StuxieDev is responsible for the content published across the TIGHC repos and this site. Game profiles submitted by contributors reflect that contributor's own research into a given game's keybinds — see <a href="https://github.com/TIGHC/Profiles" target="_blank" rel="noopener">TIGHC/Profiles</a> for that repo's own contribution history. See the <a href="/legal/disclaimer">Disclaimer</a> for more on accuracy and liability.</p>
+        <h2>Test the install</h2>
+        <ul>
+          <li>Visit your domain — you should see the TIGHC landing
+          page, not a 404 or blank page.</li>
+          <li>Visit <code>/engine.html</code> and <code>/profiles.html</code> —
+          these fetch live content from
+          <code>github.com/TIGHC/Engine</code> and
+          <code>github.com/TIGHC/Profiles</code> at runtime via
+          <code>fetch()</code>, which needs an <code>http(s)://</code>
+          origin. This only matters if you're testing by double-clicking
+          the HTML files directly (<code>file://</code>) instead of
+          through a real host — any static host, GitHub Pages included,
+          serves over <code>http(s)://</code> by default.</li>
+          <li>Visit <code>/legal</code> — confirms the legal hub and its
+          six sub-pages made it across.</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li><strong>404 on every page.</strong> Pages source isn't set
+          to <code>main</code> / root — check
+          <strong>Settings &rarr; Pages</strong>.</li>
+          <li><strong>Custom domain shows GitHub's default 404 or a DNS
+          error.</strong> DNS record doesn't point at GitHub Pages yet,
+          or hasn't propagated — check
+          <strong>Settings &rarr; Pages</strong> for the domain's
+          verification status.</li>
+          <li><strong><code>/engine.html</code>/<code>/profiles.html</code>
+          show nothing, or the console shows a fetch/CORS error.</strong>
+          You're opening the file directly (<code>file://</code>) instead
+          of via a real HTTP host — see the
+          <a href="/guides/developer">Developer Guide</a> to serve it
+          locally over HTTP instead.</li>
+          <li><strong>Certificate warning on the custom domain.</strong>
+          GitHub Pages' automatic HTTPS cert can take up to 24h to
+          provision after DNS is pointed correctly — wait and recheck
+          <strong>Settings &rarr; Pages</strong>.</li>
+        </ul>
 
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
@@ -118,7 +190,7 @@
       <p class="footer-versions">
         <span data-version="engine" data-version-prefix="Engine ">Engine vX.Y.Z</span>
         <span data-version="profiles" data-version-prefix="Profiles ">Profiles vX.Y.Z</span>
-        <span data-version="website" data-version-prefix="Website ">Website v1.3.2</span>
+        <span data-version="website" data-version-prefix="Website ">Website vX.Y.Z</span>
       </p>
     </div>
     <div class="footer-col">
