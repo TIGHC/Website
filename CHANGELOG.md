@@ -4,6 +4,17 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.10.1] - 2026-09-12
+
+### Fixed
+- **Stale hardcoded version fallback text** — 15 occurrences across 10
+  pages showed a plausible-but-wrong version number (`Website v1.3.2`,
+  `Engine v3.8.0`, `Profiles v1.3.0`) instead of the generic `vX.Y.Z`
+  placeholder most other version spans on the site already correctly use.
+  If `versions.js`'s fetch ever fails, visitors would have seen a
+  confidently wrong version rather than an obvious placeholder. Replaced
+  every occurrence with `vX.Y.Z`.
+
 ## [1.10.0] - 2026-09-10
 
 ### Added
