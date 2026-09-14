@@ -4,6 +4,23 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.13.1] - 2026-09-14
+
+### Fixed
+- **`releases.html`'s hero section was missing the "Download Steam
+  artwork (.zip)" button** present on the sibling TS4RLS/TWRAR sites —
+  added it back, linking to `/assets/steam`.
+- **`releases.js`'s `parseAsset()` had a stale naming regex**: its comment
+  claimed to match "the current (post-v5.0.0) naming" as
+  `TIGHC-<platform>-vX.Y.Z[.exe]`, but the actual CI output
+  (`ci.yml`'s "Collect build artifacts" step) has dropped the version
+  segment entirely (`TIGHC-windows.exe`, `TIGHC-linux`, `TIGHC-macos.zip`)
+  since the switch away from per-file versioning. Every current release's
+  asset buttons were falling back to showing the raw filename instead of
+  "Windows"/"macOS"/"Linux". Regex now matches both the current
+  unversioned naming and the older versioned/gui-cli naming, with test
+  coverage added for all three generations.
+
 ## [1.13.0] - 2026-09-13
 
 ### Added

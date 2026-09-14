@@ -62,7 +62,13 @@ test("formatBody", async (t) => {
 });
 
 test("parseAsset", async (t) => {
-  await t.test("parses the current (post-v5.0.0) naming scheme", () => {
+  await t.test("parses the current naming scheme (no version segment - see ci.yml)", () => {
+    assert.deepEqual(parseAsset("TIGHC-windows.exe"), { platform: "windows", target: "" });
+    assert.deepEqual(parseAsset("TIGHC-linux"), { platform: "linux", target: "" });
+    assert.deepEqual(parseAsset("TIGHC-macos.zip"), { platform: "macos", target: "" });
+  });
+
+  await t.test("parses the post-v5.0.0, pre-unversioned naming scheme", () => {
     assert.deepEqual(parseAsset("TIGHC-windows-v5.0.0.exe"), { platform: "windows", target: "" });
     assert.deepEqual(parseAsset("TIGHC-linux-v5.0.0"), { platform: "linux", target: "" });
     assert.deepEqual(parseAsset("TIGHC-macos-v5.0.0"), { platform: "macos", target: "" });
@@ -75,6 +81,7 @@ test("parseAsset", async (t) => {
 
   await t.test("returns a null platform for unrecognized asset names", () => {
     assert.deepEqual(parseAsset("source-code.zip"), { platform: null, target: "" });
+    assert.deepEqual(parseAsset("TIGHC_Steam_Assets.zip"), { platform: null, target: "" });
   });
 });
 

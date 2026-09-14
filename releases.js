@@ -35,12 +35,13 @@
     }).join("");
   }
 
-  // Matches both the current asset naming (TIGHC-<platform>-vX.Y.Z[.exe])
-  // and the pre-v5.0.0 naming that included a gui/cli target segment
+  // Matches both the current asset naming (TIGHC-<platform>[.exe/.zip], no
+  // version segment - see ci.yml's "Collect build artifacts" step) and the
+  // pre-v5.0.0 naming that included a version and a gui/cli target segment
   // (TIGHC-gui-windows-vX.Y.Z.exe / TIGHC-cli-linux-vX.Y.Z), so old releases
   // still render sensible labels.
   function parseAsset(name) {
-    var m = /^TIGHC-(?:(gui|cli)-)?(windows|linux|macos)-v[\d.]+(?:\.exe)?$/.exec(name);
+    var m = /^TIGHC-(?:(gui|cli)-)?(windows|linux|macos)(?:-v[\d.]+)?(?:\.(?:exe|zip))?$/.exec(name);
     if (!m) return { platform: null, target: "" };
     return { target: m[1] || "", platform: m[2] };
   }
