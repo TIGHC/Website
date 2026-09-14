@@ -4,6 +4,20 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.13.3] - 2026-09-14
+
+### Changed
+- **`steam.html` no longer stores its own copy of Steam artwork.**
+  `assets/steam/` here was a stale, manually-dropped duplicate that
+  nothing kept in sync (this is exactly why it was still showing the
+  pre-v6.3.3 icon after the Engine's wave-arc fix) — removed it entirely;
+  the page's preview images now hotlink the Engine repo's raw GitHub URLs
+  directly (the single source of truth).
+- **The preview gallery only showed 2 of the 6 generated assets**
+  (grid capsule and hero, each standing in for a pair). Expanded to one
+  card per actual file: both grid capsule orientations, the hero, and
+  both logo variants, plus the small library icon.
+
 ## [1.13.2] - 2026-09-14
 
 ### Fixed
