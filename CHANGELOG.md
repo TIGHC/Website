@@ -4,6 +4,15 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.13.2] - 2026-09-14
+
+### Fixed
+- Synced `assets/favicon.ico`, `assets/icon.png`, `assets/logo.png`, and
+  the site-root `favicon.ico` from the Engine repo's corrected icon (its
+  "haptic wave" mark now reads as two clean signal arcs instead of two
+  disconnected comet-shaped ticks — see the Engine's v6.3.3 changelog
+  entry).
+
 ## [1.13.1] - 2026-09-14
 
 ### Fixed
