@@ -4,6 +4,11 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.13.5] - 2026-09-15
+
+### Fixed
+- Every page's footer credit (`README.md` and all 21 site pages, including `/legal/*`) now uses the hosted `https://global.media.stuxie.dev/icon.png` StuxieDev icon instead of the live GitHub avatar shorthand
+
 ## [1.13.4] - 2026-09-14
 
 ### Fixed
