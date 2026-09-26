@@ -4,6 +4,17 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.13.7] - 2026-09-26
+
+### Changed
+- Changelog pages now sort each release's `###` sections into a fixed order at render time — Added, Changed, Fixed, Removed, Security, Deprecated, with unknown types (e.g. "Breaking Changes") last — instead of trusting the markdown's order.
+- Changelog badges use the shared type palette: Added `#2ecc71`, Changed `#3ba7ff`, Fixed `#ffa64d`, Removed `#ff4d4d`, Security `#b06bff`, Deprecated `#8a8a94` (darker shades of the same hues on the light theme). Deprecated sections get their own badge instead of the generic one.
+- `LICENSE.md` copyright holder changed from Leo Ridgwell (StuxieDev) to Stux.Group.
+- CHANGELOG sections reordered to Added, Changed, Fixed, Removed, Security, Deprecated.
+
+### Security
+- `dev-server.py`'s `/dev-sibling/<repo>/...` route now refuses any path that resolves outside the sibling checkout (`..` segments, absolute paths, symlinks pointing out) and answers it with a plain 404, so the local dev server can't be used to read arbitrary files. Covered by the new `tests/test_dev_server.py`.
+
 ## [1.13.6] - 2026-09-23
 
 ### Fixed
@@ -119,10 +130,6 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   adapted from these very files earlier this session). Linked from
   `/guides` and from the README's "Local preview"/"Deploying" sections.
 
-### Removed
-- **`INSTALL.md`** and **`DEV_GUIDE.md`** — content moved to the two new
-  guide pages above; README.md/CONTRIBUTING.md now link to those instead.
-
 ### Fixed
 - **Stale Tkinter/cover-art references left over from the Engine's
   Tk→Qt migration and SteamGridDB removal**, across `guides.html`,
@@ -138,6 +145,10 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   12 pages" by name, already wrong before this release added two more;
   reworded to describe the scope generically instead of enumerating it,
   so it can't go stale like that again.
+
+### Removed
+- **`INSTALL.md`** and **`DEV_GUIDE.md`** — content moved to the two new
+  guide pages above; README.md/CONTRIBUTING.md now link to those instead.
 
 ## [1.10.2] - 2026-09-12
 
@@ -310,6 +321,13 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
 ## [1.5.4] - 2026-09-10
 
+### Changed
+- **Author link now points to `https://stuxie.dev`** instead of
+  `https://github.com/StuxieDev` - the "By StuxieDev" footer link on all
+  12 pages, and `README.md`'s footer link. The GitHub avatar image
+  (`github.com/StuxieDev.png`) is unaffected - that's still the only place
+  to fetch it from.
+
 ### Fixed
 - **Theme toggle floated in the middle of the header on mobile** -
   `.header-inner` is a flex row with `justify-content: space-between`
@@ -329,13 +347,6 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   across two lines). Split the nav-collapse rules out of the general
   "Mobile" breakpoint into their own `@media (max-width: 900px)` block, so
   the switch to the hamburger happens before the squeeze, not after.
-
-### Changed
-- **Author link now points to `https://stuxie.dev`** instead of
-  `https://github.com/StuxieDev` - the "By StuxieDev" footer link on all
-  12 pages, and `README.md`'s footer link. The GitHub avatar image
-  (`github.com/StuxieDev.png`) is unaffected - that's still the only place
-  to fetch it from.
 
 ## [1.5.3] - 2026-09-10
 
@@ -614,13 +625,13 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
 ## [1.1.2] - 2026-08-30
 
-### Fixed
-- **Footer version label** — the footer now shows "Website vX.X.X" instead of
-  just "vX.X.X" to distinguish it from the Engine version.
-
 ### Changed
 - **Repo moved to TIGHC org** — all URLs updated from `StuxieDev/TIGHC-Website`
   to `TIGHC/Website`.
+
+### Fixed
+- **Footer version label** — the footer now shows "Website vX.X.X" instead of
+  just "vX.X.X" to distinguish it from the Engine version.
 
 ## [1.1.1] - 2026-08-30
 
@@ -725,6 +736,12 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
 ## [1.0.1] - 2026-08-25
 
+### Added
+- Author credit: a "By StuxieDev" link in both pages' footers, plus an
+  "Author" section (name + GitHub avatar at `assets/author.png`) in
+  `README.md`, matching the same addition in the main TIGHC repo and
+  TIGHC-Profiles.
+
 ### Fixed
 - `README.md` had been written as UTF-16LE (every character followed by a
   null byte) instead of UTF-8, which would have rendered as garbled
@@ -732,12 +749,6 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
   `style.css`, `script.js`, `profiles.html`, `profiles.js`, `CNAME`) was
   already correct UTF-8, so this was isolated to the one file. Rewritten as
   plain UTF-8 with the same content.
-
-### Added
-- Author credit: a "By StuxieDev" link in both pages' footers, plus an
-  "Author" section (name + GitHub avatar at `assets/author.png`) in
-  `README.md`, matching the same addition in the main TIGHC repo and
-  TIGHC-Profiles.
 
 ## [1.0.0] - 2026-08-25
 

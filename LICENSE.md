@@ -1,6 +1,6 @@
 # Closed Source License
 
-Copyright (c) 2026 Leo Ridgwell (StuxieDev). All rights reserved.
+Copyright (c) 2026 Stux.Group. All rights reserved.
 
 This repository and its contents (the "Software") are private and proprietary.
 The Software is confidential and is **not** open source; no license is granted
