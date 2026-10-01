@@ -6,9 +6,7 @@ default: it writes dev-config.js (gitignored, never deployed) so
 profiles.js/changelogs.js/versions.js fetch Engine/Profiles/Website content
 from the sibling checkouts next to this one (../Engine, ../Profiles) instead
 of GitHub - so local edits to those repos' CHANGELOG.md/VERSION.md/profiles
-show up here without pushing first - and reveals the `#dev-banner` element
-every page already carries (hidden by default), same env-banner treatment
-as Stuxs.Tools. Pass --no-dev-mode to fetch from GitHub instead, matching
+show up here without pushing first - and sets window.TIGHC_DEV, which assets/site-banners.js uses to show the dev banner. Pass --no-dev-mode to fetch from GitHub instead, matching
 production (the banner then stays hidden, since dev-config.js is never
 written).
 """
@@ -79,15 +77,6 @@ def write_dev_config(dev_mode, port):
         "  profilesApi: '/dev-api/profiles-contents',",
         "  port: %d" % port,
         "};",
-        "(function () {",
-        "  var banner = document.getElementById('dev-banner');",
-        "  var detail = document.getElementById('dev-banner-detail');",
-        "  if (detail) {",
-        "    detail.textContent = 'TIGHC Website running on :' + window.TIGHC_DEV.port +",
-        "      ' \\u2014 Engine/Profiles content served from local sibling checkouts, not GitHub.';",
-        "  }",
-        "  if (banner) banner.hidden = false;",
-        "})();",
         "console.log('[TIGHC dev mode] Engine/Profiles/Website content is loaded from local sibling checkouts, not GitHub.');",
     ]
     with open(path, "w", encoding="utf-8") as f:

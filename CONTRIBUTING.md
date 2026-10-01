@@ -57,6 +57,10 @@ expire on its own. Font Awesome's own CSS/font files under
 Awesome's own release (`?v=6.7.2` currently), bumped only when that vendored
 copy itself is upgraded, not on every site release.
 
+## Sitemap
+
+`sitemap.xml`, `sitemap/index.html` and `robots.txt` are generated: after adding or removing a public page, edit the `PAGES` list in `scripts/build-sitemap.py`, run `python scripts/build-sitemap.py`, and commit the result. `python -m unittest discover -s tests` checks them.
+
 ## Deploying
 
 Merges to `main` publish automatically via GitHub Pages - no separate deploy
