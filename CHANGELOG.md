@@ -4,6 +4,12 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), independent
 of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
+## [1.14.2] - 2026-10-01
+
+### Changed
+
+- The footer's copyright year is worked out automatically: the start year alone in the first year, then START–CURRENT
+
 ## [1.14.1] - 2026-10-01
 
 ### Fixed
