@@ -33,29 +33,16 @@ locally.
 
 ## Versioning
 
-Bump [`VERSION.md`](VERSION.md) and add a matching entry to
-[`CHANGELOG.md`](CHANGELOG.md) in the same PR, following
-[Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`),
-independent of the main Engine's own version.
+This project uses [Date Versioning](https://datevers.ing). To release:
 
-**Every first-party static asset reference carries a `?v=X.Y.Z`
-cache-busting query string, always set to the current `VERSION.md`** -
-`assets/logo.png`, `assets/icon.png`, `assets/favicon.ico`, `style.css`,
-and every first-party script tag (`script.js`, `dev-config.js`,
-`versions.js`, and whichever of `profiles.js`/`changelogs.js`/`releases.js`
-that page loads). Since this site has no build step to interpolate that
-automatically, and `VERSION.md` gets bumped on every release regardless
-(see above), **every release must hand-bump every `?v=` string to match the
-new `VERSION.md`, across every top-level HTML page and everything under
-`legal/` and `guides/`** - roughly a dozen references each (meta
-`og:image`/`twitter:image` tags, favicon `<link>`s, inline `<img>`
-logos/icons, the `style.css` `<link>`, and every `<script src>`).
-Forgetting this doesn't break anything visibly at release time - it just
-means visitors keep seeing old CSS/JS/images until their cache happens to
-expire on its own. Font Awesome's own CSS/font files under
-`assets/fontawesome/` are the one exception - they're versioned to Font
-Awesome's own release (`?v=6.7.2` currently), bumped only when that vendored
-copy itself is upgraded, not on every site release.
+1. Add a `## vYY.MM.DD` entry at the top of `CHANGELOG.md`, with its sections in this order: Added, Changed, Fixed, Removed, Security, Deprecated.
+2. Set `VERSION.md` to the same bare version (no `v`): today's **UTC** date as `YY.MM.DD`, or `YY.MM.DD-1`, `-2`… for later releases the same UTC day. Never a future date. Use UTC, not local time: just after midnight in the UK it is still the previous day in UTC.
+3. Run `bash tests/version.sh`.
+4. Run `./commit.sh` (or `commit.bat` on Windows). It checks the version, commits and tags `vYY.MM.DD`, and never pushes.
+
+## Discord preview and icons
+
+Each page's `<head>` carries a Discord component embed. After adding a page or changing a page's title or description, run `python scripts/build-embeds.py` (the tests fail if it is out of date). A new page also needs the four icon tags (`/favicon.ico`, `/assets/icon-512.png`, `/apple-touch-icon.png`, `/site.webmanifest`) copied from any existing page.
 
 ## Sitemap
 

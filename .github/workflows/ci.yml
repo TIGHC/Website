@@ -20,6 +20,9 @@ jobs:
       - name: Run unit tests
         run: node --test
 
+      - name: Run Python tests
+        run: python3 -m unittest discover -s tests -p "test_*.py"
+
   html-validate:
     name: HTML validation
     runs-on: ubuntu-latest

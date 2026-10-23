@@ -51,6 +51,7 @@ assets/steam.html               # redirects to the latest TIGHC_Steam_Assets.zip
 assets/icon.png, logo.png, author.png, favicon.ico   # copied from the main TIGHC repo's assets/
 assets/fontawesome/             # Font Awesome Free (vendored, self-hosted - see its own LICENSE.txt)
 
+scripts/build-embeds.py           # writes the Discord link-preview embed into each page's <head>
 tests/                          # node:test unit tests for changelogs.js/profiles.js/releases.js/versions.js
 .github/workflows/ci.yml        # runs `node --test` and html-validate on every push/PR
 
@@ -125,12 +126,9 @@ CI (`.github/workflows/ci.yml`) runs these tests and validates the
 top-level HTML pages with [html-validate](https://html-validate.org/) on
 every push and pull request.
 
-## Versioning and contact
+## Versioning
 
-Follows [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`),
-independently of the main TIGHC engine's own version - see
-[CHANGELOG.md](CHANGELOG.md) for what changed in each release. Questions,
-issues, or contributions: https://github.com/TIGHC/Website
+This project uses [Date Versioning](https://datevers.ing): each release is numbered by its UTC release date as `YY.MM.DD` (for example `26.10.23`), with `-1`, `-2`… for later releases the same day. See [CHANGELOG.md](CHANGELOG.md) for what changed in each release.
 
 ## License
 
