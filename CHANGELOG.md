@@ -6,6 +6,12 @@ of the main [TIGHC](https://github.com/TIGHC/Engine) engine's own version.
 
 Since v26.10.23 this project uses [Date Versioning](https://datevers.ing) (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used Semantic Versioning.
 
+## v26.10.26
+
+### Security
+
+- The unit-test CI job runs on Node.js 24 instead of the end-of-life Node.js 20, which has no fix for the Brotli decoder vulnerability CVE-2026-111497 (the HTML validation job was already on Node.js 22)
+
 ## v26.10.23
 
 ### Added
